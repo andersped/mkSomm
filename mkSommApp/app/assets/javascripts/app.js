@@ -1,0 +1,1 @@
+var mkSomm = angular.module('mkSomm', ['ui.router', 'templates']) 
