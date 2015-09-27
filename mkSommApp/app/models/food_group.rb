@@ -1,2 +1,10 @@
 class FoodGroup < ActiveRecord::Base
+	has_many :perfects, dependent: :destroy
+	has_many :pairings, through: :perfects
+	has_many :categories, through: :wine_and_food_pairings
+
+	def as_json(options = {})
+		super(options.merge(include: [:pairings, :categories]))
+	end
+
 end

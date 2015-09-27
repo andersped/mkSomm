@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927222749) do
+ActiveRecord::Schema.define(version: 20150927231801) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "category_pairings", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "pairing_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "category_pairings", ["category_id"], name: "index_category_pairings_on_category_id"
+  add_index "category_pairings", ["pairing_id"], name: "index_category_pairings_on_pairing_id"
 
   create_table "food_groups", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +50,16 @@ ActiveRecord::Schema.define(version: 20150927222749) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "perfects", force: :cascade do |t|
+    t.integer  "food_group_id"
+    t.integer  "pairing_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "perfects", ["food_group_id"], name: "index_perfects_on_food_group_id"
+  add_index "perfects", ["pairing_id"], name: "index_perfects_on_pairing_id"
+
   create_table "varietals", force: :cascade do |t|
     t.string   "visual"
     t.string   "aroma"
@@ -57,9 +77,20 @@ ActiveRecord::Schema.define(version: 20150927222749) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "food_group_id"
+    t.string   "name"
   end
 
   add_index "varietals", ["category_id"], name: "index_varietals_on_category_id"
   add_index "varietals", ["food_group_id"], name: "index_varietals_on_food_group_id"
+
+  create_table "wine_and_food_pairings", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "food_group_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "wine_and_food_pairings", ["category_id"], name: "index_wine_and_food_pairings_on_category_id"
+  add_index "wine_and_food_pairings", ["food_group_id"], name: "index_wine_and_food_pairings_on_food_group_id"
 
 end
