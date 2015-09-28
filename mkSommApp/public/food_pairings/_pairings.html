@@ -32,4 +32,29 @@
 	<button type="button" class="btn btn-primary btn-xl" ng-click="findVarietals()">Find Varietals</button>	
 </div>
 
+<section>
+	<div ng-repeat="varietal in varietals">
+		<div class="col-lg-3 col-md-6 text-center">
+	      <div class="service-box">
+	        <div ng-click="clicked=true"><a href="">{{varietal.name}}</a></div>
+	        <div>
+	        	<ul ng-show="clicked">
+	        		<li><b>Aroma:</b> {{varietal.aroma}}</li>
+							<li><b>Earth:</b> {{varietal.earth}}</li>
+							<li><b>Floral:</b> {{varietal.floral}}</li>
+							<li><b>Fruit:</b> {{varietal.fruit}}</li>
+							<li><b>Herbal:</b> {{varietal.herbal}}</li>
+							<li><b>Oak:</b> {{varietal.oak}}</li>
+							<li><b>Other:</b> {{varietal.other}}</li>
+							<li><b>Spice:</b> {{varietal.spice}}</li>
+							<li><b>Structure:</b> {{varietal.structure}}</li>
+							<li><b>Visual:</b> {{varietal.visual}}</li>
+							<button ng-click="clicked=false">Close</button>
+	        	</ul>
+	       	</div>
+	     </div>
+	   </div> 
+	</div>
+<section>
+
 

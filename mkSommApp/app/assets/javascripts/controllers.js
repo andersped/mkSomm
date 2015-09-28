@@ -22,6 +22,8 @@ mkSomm.controller('FoodSearchCtrl', ['$scope', '$location', 'foodGroups', functi
   $scope.foodGroups = foodGroups.foodGroups
   $scope.foods = foodGroups.foods
   $scope.categories = foodGroups.category
+  $scope.varietals = foodGroups.varietals
+  $scope.clicked = false
   // console.log($scope.categories)
 
 

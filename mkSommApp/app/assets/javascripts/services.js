@@ -18,7 +18,8 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 	var o = {
 		foodGroups: [],
 		foods: [],
-		category: []
+		category: [],
+		varietals: []
 	};
 
 
@@ -107,7 +108,16 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 			} else if (wineSelection == 1){
 				wineSelection = "Dessert"
 			}
-			console.log(wineSelection)
+			// console.log(wineSelection)
+
+			return $http.get('/varietals/'+wineSelection+'.json').success(function(data){
+				console.log(data)
+			// console.log(allFoodGroups)
+				angular.copy(data, o.varietals);
+		})
+	// }
+	
+
 	} 
 
 
