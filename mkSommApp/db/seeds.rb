@@ -343,9 +343,9 @@ f1.pairings << p3
 f1.pairings << p4
 f1.pairings << p5
 f1.pairings << p6
+f1.pairings << p7
 
 # Preparation Array
-f2.pairings << p7
 f2.pairings << p8
 f2.pairings << p9
 f2.pairings << p10

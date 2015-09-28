@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :food_groups, only: [:index, :show]
     # resources :varietals, only: [:index, :show]
     get '/varietals/:winename', :to => 'varietals#index'
+    get '/winesearches/:varietal', :to => 'wine_searches#index'
 
 end
 

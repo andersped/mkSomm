@@ -34,9 +34,9 @@
 
 <section>
 	<div ng-repeat="varietal in varietals">
-		<div class="col-lg-3 col-md-6 text-center">
+		<ul>
 	      <div class="service-box">
-	        <div ng-click="clicked=true"><a href="">{{varietal.name}}</a></div>
+	        <li ng-click="clicked=true"><a href="">{{varietal.name}}</a></li>
 	        <div>
 	        	<ul ng-show="clicked">
 	        		<li><b>Aroma:</b> {{varietal.aroma}}</li>
@@ -53,7 +53,22 @@
 	        	</ul>
 	       	</div>
 	     </div>
-	   </div> 
+	     	<!-- Search wine.com api -->
+			<button type="button" value="{{varietal.name}}" ng-click="findWines(varietal.name); search=true">Search {{varietal.name}}</button>
+		</ul> 	
+
+			<!-- Make this an ng-show if the Search button is clicked -->
+			<div ng-repeat="wine in wines">
+					<div class="col-lg-4 col-md-4 text-center">
+	      		<div class="service-box">
+	     				<div>{{wine.Name}}</div>
+							<div ng-repeat="Label in wine.Labels">
+	     					<div><img src="{{Label.Url}}" height="72px" width="80px" alt=""></div>
+	     					<div><button>Add to Favorites</button></div>
+	     				</div>
+	     			</div>
+	  			</div> 
+			</div>
 	</div>
 <section>
 

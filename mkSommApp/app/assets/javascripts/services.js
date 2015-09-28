@@ -19,7 +19,8 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 		foodGroups: [],
 		foods: [],
 		category: [],
-		varietals: []
+		varietals: [],
+		wines: []
 	};
 
 
@@ -34,17 +35,20 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 	};
 	
 	o.nextSelection = function(value){
-
-		
+		console.log(value)
 	
 		if (typeof value.pairings != "undefined"){
 				return angular.copy(value.pairings, o.foodGroups)
 		} else if (typeof value.foods != "undefined"){
 				// o.category.push(value.categories)
+				if (value.foods.length < 1) {
+					o.foods.push(value.name)
+					return angular.copy(allFoodGroups, o.foodGroups)
+				};
 				return angular.copy(value.foods, o.foodGroups)
 		} else {
-				o.foods.push(value.name)
-				return angular.copy(allFoodGroups, o.foodGroups)
+			o.foods.push(value.name)
+			return angular.copy(allFoodGroups, o.foodGroups)
 		}
 	};
 
@@ -56,13 +60,14 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 
 	o.addToCategories = function(value){
 		if (value.foods){
-			return angular.copy(value.categories, o.category)
+			o.category.push(value.categories)
+			// console.log(o.category)
+			// return angular.copy(value.categories, o.category)
 		}
 	}
 
 	o.findVarietals = function(categories){
 		wineCategoryCounter = 0
-		console.log(categories)
 
 		for (i = 0; i < categories.length; i++){
 			if (categories[i] == "Bold Red"){
@@ -118,7 +123,25 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 	// }
 	
 
-	} 
+	}
+
+	o.findWines = function(varietal) {
+		return $http.get('/winesearches/'+varietal+'.json').success(function(data){
+			// allFoodGroups = data
+			// console.log(allFoodGroups)
+			// data.data.Products.List
+			console.log(data.Products.List)
+			angular.copy(data.Products.List, o.wines);
+		});
+	};
+
+	// $http.get('./winesearches/'+varietal).then(function(data){
+    //     // console.log(data.data.Products.List)
+    //     $scope.wines = data.data.Products.List
+    //     console.log($scope.wines)
+
+        
+    // }) 
 
 
 	//  $scope.newFood = function(value){

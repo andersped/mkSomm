@@ -28,6 +28,11 @@ mkSomm.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $
         }]
       }
 		})
+    .state('/wines', {
+      url: '/wines',
+      templateUrl: 'wines/_wines.html',
+      controller: 'WineSearchCtrl'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'auth/_login.html',
