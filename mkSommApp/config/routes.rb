@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   # The root goes to the angular config
   root to: 'application#angular'
 

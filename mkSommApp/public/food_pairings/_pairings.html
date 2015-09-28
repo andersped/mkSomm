@@ -1,3 +1,35 @@
 <div class="page-header">
       <h1>Food Pairings</h1>
 </div>
+
+<section>
+	<div ng-repeat="foodGroup in foodGroups">
+		<div class="col-lg-3 col-md-6 text-center">
+	      <div class="service-box">
+	        <button class="btn btn-primary btn-xl" value="{{foodGroup.name}}" ng-click="newFood(foodGroup)">{{foodGroup.name}}</button>
+	     </div>
+	   </div> 
+	</div>
+<section>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<section>
+<!-- 	<div class="col-lg-3 col-md-6 text-center"> -->
+		<ul ng-repeat="food in foods">	
+			<li><i>{{food}}</i></li>
+		</ul>
+<!-- 	</div> -->
+</section>
+<div>
+	<button type="button" class="btn btn-primary btn-xl" ng-click="findVarietals()">Find Varietals</button>	
+</div>
+
+

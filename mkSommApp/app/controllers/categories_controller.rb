@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_filter :authenticate_user!, only: [:create, :upvote]
 
 	def index
     respond_with Category.all
@@ -20,7 +21,7 @@ class CategoriesController < ApplicationController
   end
 
   private
-  def post_params
-    params.require(:category).permit(:name)
-  end
+	  def post_params
+	    params.require(:category).permit(:name)
+	  end
 end
