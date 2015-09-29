@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  appellation: MyString
+  region: MyString
+  varietal: MyString
+  winery: MyString
+  price: 9.99
+  rating: 1
+  type: 
+  label: MyString
+  upvotes: 1
+
+two:
+  name: MyString
+  appellation: MyString
+  region: MyString
+  varietal: MyString
+  winery: MyString
+  price: 9.99
+  rating: 1
+  type: 
+  label: MyString
+  upvotes: 1

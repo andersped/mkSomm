@@ -1,5 +1,5 @@
 class FoodGroupsController < ApplicationController
-	before_filter :authenticate_user!, only: [:create, :upvote]
+	# before_filter :authenticate_user!, only: [:create, :upvote]
 
   def index
     respond_with FoodGroup.all

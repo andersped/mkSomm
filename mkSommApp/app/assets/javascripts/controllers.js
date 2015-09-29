@@ -4,16 +4,26 @@ mkSomm.controller('HomeCtrl', ['$scope',function($scope){
 	}
 ]);
 
-mkSomm.controller('CategorySearchCtrl', ['$scope', '$location', 'categories', function($scope, $location, categories){
+mkSomm.controller('CategorySearchCtrl', ['$scope', '$location', 'categories', 'foodGroups', function($scope, $location, categories, foodGroups){
   // $scope.clicked = false;
-
+  console.log(categories.categories)
   $scope.categories = categories.categories
-  
+  $scope.varietals = categories.varietals
+  $scope.wines = foodGroups.wines
+  $scope.clicked = false
 
-    // $http.get('./categories.json').then(function(data){
-    //   $scope.categories = data.data
-    //   console.log(data.data)
-    //   })
+  $scope.findVarietals = function(value){
+    categories.findNewVarietals(value)
+    console.log(value)
+    }
+  
+  $scope.findWines = function(value){
+    var varietal = value
+    foodGroups.findWines(varietal)
+    console.log(foodGroups.wines)
+
+  } 
+
   }
 ])
 
@@ -49,7 +59,8 @@ mkSomm.controller('FoodSearchCtrl', ['$scope', '$location', 'foodGroups', functi
    $scope.findWines = function(value){
     var varietal = value
     foodGroups.findWines(varietal)
-    console.log(foodGroups.wines)
+    // console.log(foodGroups.wines)
+    // console.log($scope.wines[0])
 
   } 
 
@@ -80,10 +91,48 @@ mkSomm.controller('NavCtrl', ['$scope', 'Auth', function($scope, Auth){
     $scope.user = {};
   });
 
-
   
   }
 ]);
+
+mkSomm.controller('WineSearchCtrl', ['$scope', '$location', function($scope, $location){
+  $scope.test = "It Works!"
+
+  }
+])
+
+mkSomm.controller('WineCtrl', ['$scope', '$location', 'wines', function($scope, $location, wines){
+  $scope.home = "It Works!"
+    
+    $scope.addWine = function(wine){
+      console.log(wine)
+    
+    wines.create({
+      name: wine.Name,
+      label: wine.Labels[0].Url,
+      appellation: wine.Appellation.Name,
+      region: wine.Appellation.Region.Name,
+      varietal: wine.Varietal.Name,
+      winery: wine.Vineyard.Name,
+      price: wine.PriceRetail,
+      score: wine.Ratings.HighestScore,
+      type: wine.Type
+    })
+    // console.log(winesObject)
+
+
+
+    }
+
+    // wine.Name, Label.Url, wine.Appellation.Name, wine.Appellation.Region.Name, wine.Varietal.Name, wine.Vineyard.Name, wine.PriceRetail, wine.Ratings.HighestScore, wine.Type
+
+  }
+]);
+
+mkSomm.controller('UserCtrl', ['$scope','$state','Auth', function($scope, $state, Auth){
+    $scope.test = "It works!"
+  }
+])
 
 mkSomm.controller('AuthCtrl', ['$scope','$state','Auth', function($scope, $state, Auth){
 
@@ -100,8 +149,18 @@ mkSomm.controller('AuthCtrl', ['$scope','$state','Auth', function($scope, $state
     });
   };
 
+  $scope.logout = function() {
+    Auth.logout($scope.user).then(function(){
+      $state.go('home')
+    });
+  };
+
   }
 ]);
+
+
+
+
 
 
 

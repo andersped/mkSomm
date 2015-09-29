@@ -58,14 +58,26 @@
 		</ul> 	
 
 			<!-- Make this an ng-show if the Search button is clicked -->
-			<div ng-repeat="wine in wines">
+			<div ng-repeat="wine in wines |orderBy:'PriceRetail'">
 					<div class="col-lg-4 col-md-4 text-center">
 	      		<div class="service-box">
 	     				<div>{{wine.Name}}</div>
 							<div ng-repeat="Label in wine.Labels">
 	     					<div><img src="{{Label.Url}}" height="72px" width="80px" alt=""></div>
 	     					<div><button>Add to Favorites</button></div>
-	     				</div>
+			     				<div><b><i>Appellation:</i></b> {{wine.Appellation.Name}}</div>
+			     				<div><b><i>Region:</i></b> {{wine.Appellation.Region.Name}}</div>
+			     				<div><b><i>Varietal:</i></b> {{wine.Varietal.Name}}</div>
+			     				<div><b><i>Winery:</i></b> {{wine.Vineyard.Name}}</div>
+			     				<div><b><i>Retail Price:</i></b> {{wine.PriceRetail | currency}}</div>
+			     				<div><b><i>Rating:</i></b> {{wine.Ratings.HighestScore}}</div>
+			     				<div><b><i>Type:</i></b> {{wine.Type}}</div>
+			     				<div>Category: {{varietal.category}}</div>
+			     				<div ng-controller="WineCtrl">
+			     					<button type="button" ng-click="addWine(wine)">Add to List</button>
+			     					<!-- <button type="button" ng-click="addWine(wine.Name, Label.Url, wine.Appellation.Name, wine.Appellation.Region.Name, wine.Varietal.Name, wine.Vineyard.Name, wine.PriceRetail, wine.Ratings.HighestScore, wine.Type)">Add to List</button> -->
+			     				</div>
+			     		</div>
 	     			</div>
 	  			</div> 
 			</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150928012744) do
+ActiveRecord::Schema.define(version: 20150929022547) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -112,5 +112,23 @@ ActiveRecord::Schema.define(version: 20150928012744) do
 
   add_index "wine_and_food_pairings", ["category_id"], name: "index_wine_and_food_pairings_on_category_id"
   add_index "wine_and_food_pairings", ["food_group_id"], name: "index_wine_and_food_pairings_on_food_group_id"
+
+  create_table "wines", force: :cascade do |t|
+    t.string   "name"
+    t.string   "appellation"
+    t.string   "region"
+    t.string   "varietal"
+    t.string   "winery"
+    t.decimal  "price",       precision: 8, scale: 2
+    t.integer  "rating"
+    t.string   "type"
+    t.string   "label"
+    t.integer  "upvotes"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "user_id"
+  end
+
+  add_index "wines", ["user_id"], name: "index_wines_on_user_id"
 
 end

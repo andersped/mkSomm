@@ -7,6 +7,7 @@ class Category < ActiveRecord::Base
 
 	# When rending json add the pairing association
 	def as_json(options = {})
-		super(options.merge(include: [:pairings, :food_groups]))
+		super(options.merge(include: [:varietals, pairings: {include: [:foods, :food_groups]}]))
 	end
+
 end

@@ -1,6 +1,8 @@
 mkSomm.factory('categories', ['$http', function($http){
 	var o = {
-		categories: []
+		categories: [],
+		varietals: [], 
+		wines: []
 	};
 
 
@@ -10,7 +12,15 @@ mkSomm.factory('categories', ['$http', function($http){
 			angular.copy(data, o.categories);
 		});
 	};
+
+	o.findNewVarietals = function(value){
+		console.log(value)
+		return angular.copy(value.varietals, o.varietals)
+	}
+
 	return o;
+	
+
 	}
 ])
 
@@ -35,7 +45,7 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 	};
 	
 	o.nextSelection = function(value){
-		console.log(value)
+		// console.log(value)
 	
 		if (typeof value.pairings != "undefined"){
 				return angular.copy(value.pairings, o.foodGroups)
@@ -129,87 +139,35 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 		return $http.get('/winesearches/'+varietal+'.json').success(function(data){
 			// allFoodGroups = data
 			// console.log(allFoodGroups)
-			// data.data.Products.List
 			console.log(data.Products.List)
+			// console.log(data.Products.List[0].Appellation)
 			angular.copy(data.Products.List, o.wines);
 		});
 	};
-
-	// $http.get('./winesearches/'+varietal).then(function(data){
-    //     // console.log(data.data.Products.List)
-    //     $scope.wines = data.data.Products.List
-    //     console.log($scope.wines)
-
-        
-    // }) 
-
-
-	//  $scope.newFood = function(value){
- //      // $scope.yourFoods.push(value)
- //      var restart = true
-
- //      for (i = 0; i < allFoods.length; i++){
-
-
- //         // If user selection equals one of food_groups, change selection to pairings
- //        if (value == allFoods[i].name){
- //          $scope.manyFoods = []
- //          restart = false
- //          // foodsObject.foodCategory.name.push(allFood[i])
-          
- //          for (j = 0; j < allFoods[i].pairings.length; j++){
- //            // newFoodArray = allFoods[i].pairings[j]
- //            $scope.manyFoods.push(allFoods[i].pairings[j].name)
- //          }     
-        
- //        // If user selection does not equal one of the food_groups run this function
- //        } else {
-          
-          
- //          // if ($scope.manyFoods.indexOf(value) > -1){
- //            for (j = 0; j < allFoods[i].pairings.length; j++){
-            
- //            // if(allFoods[i].name == "Preparation"){
- //            //  restart = true
- //            //  break
- //            // }  
- //            // If user selection equals a name of a pairing then change selection to food name
- //            if (value == allFoods[i].pairings[j].name){
- //              $scope.manyFoods = []
- //              restart = false
- //              // $scope.yourFoods.push(value)             
-              
- //              for (k = 0; k < allFoods[i].pairings[j].foods.length; k++){
- //                $scope.manyFoods.push(allFoods[i].pairings[j].foods[k].name)
-
- //              }
- //            } 
- //          } 
- //        } 
-          
- //        //  if (restart){
- //        //    console.log(value)
- //        //    $scope.yourFoods.push(value)
- //        //  $scope.resetList()
- //        // } 
-
- //         // For every selection check to see what cateogry of wine it pairs with
- //         // Currently the only relationships are with pairings and foods categories 
- //     } checkCategory(value)
- //            if (restart){
- //            console.log(value)
- //            $scope.yourFoods.push(value)
- //            $scope.resetList()
- //        } 
-	// }
-
- //  }
-
-
-
-
  	
 	return o;
 
 	}
 ])
+
+mkSomm.factory('wines', ['$http', function($http){
+	var o = {
+   wines: []
+  };
+
+  o.create = function(post) {
+ 	 	console.log("It Works!")
+ 	 	return $http.post('/wines.json', post).success(function(data){
+   	o.wines.push(data);
+   	console.log(data)
+
+  	});
+	};
+
+	return o;
+
+	}
+])
+
+
+
