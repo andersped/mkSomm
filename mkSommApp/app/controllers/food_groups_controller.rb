@@ -16,12 +16,12 @@ class FoodGroupsController < ApplicationController
     respond_with FoodGroup.find(params[:id])
   end
 
-  def upvote
-    food_group = FoodGroup.find(params[:id])
-    # post.increment!(:upvotes)
+  # def vote
+  #   food_group = FoodGroup.find(params[:id])
+  #   # post.increment!(:upvotes)
 
-    respond_with food_group
-  end
+  #   respond_with food_group
+  # end
 
   private
 	  def post_params

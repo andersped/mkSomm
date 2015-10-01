@@ -35,8 +35,14 @@ mkSomm.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $
     })
     .state('/user', {
       url: '/user',
-      templateUrl: 'user/_users.html',
-      controller: 'UserCtrl'
+      templateUrl: 'users/_user.html',
+      controller: 'UserCtrl',
+      resolve: {
+        usersPromise: ['users', function(users){
+          // console.log(users.getAll())
+          return users.getAll();
+        }]
+      }
     })
     .state('login', {
       url: '/login',

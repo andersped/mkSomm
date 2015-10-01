@@ -17,12 +17,12 @@ class VarietalsController < ApplicationController
     respond_with Varietal.find(params[:id])
   end
 
-  def upvote
-    varietal = Varietal.find(params[:id])
-    # post.increment!(:upvotes)
+  # def vote
+  #   varietal = Varietal.find(params[:id])
+  #   # post.increment!(:upvotes)
 
-    respond_with varietal
-  end
+  #   respond_with varietal
+  # end
 
   private
 	  # def varietal_params

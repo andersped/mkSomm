@@ -155,17 +155,61 @@ mkSomm.factory('wines', ['$http', function($http){
    wines: []
   };
 
-  o.create = function(post) {
+  o.create = function(wine) {
  	 	console.log("It Works!")
- 	 	return $http.post('/wines.json', post).success(function(data){
+ 	 	return $http.post('/wines.json', wine).success(function(data){
    	o.wines.push(data);
    	console.log(data)
+   	console.log(data.vote)
 
   	});
 	};
 
 	return o;
 
+	}
+])
+
+mkSomm.factory('users', ['$http', function($http){
+	var o = {
+		wines: []
+	};
+
+	o.getAll = function() {
+		return $http.get('/wines.json').success(function(data){
+			// console.log(data)
+			angular.copy(data, o.wines);
+		});
+	};
+
+	o.deleteWine = function(wine) {
+		console.log("first delete!")
+		return $http.delete('/wines/'+ wine.id +'.json').then(
+			$http.get('/wines.json').success(function(data){
+				angular.copy(data, o.wines);
+			})
+			)
+
+	
+	};
+
+	o.voteUp = function(wine){
+		// console.log("It Works!")
+		return $http.put('/wines/' + wine.id + '/vote.json')
+    	.success(function(data){
+      	wine.vote += 1;
+    });
+	}
+
+	o.voteDown = function(wine){
+		return $http.put('/wines/' + wine.id + '/vote.json')
+    	.success(function(data){
+      	wine.vote -= 1;
+    });
+	}
+
+
+	return o;
 	}
 ])
 

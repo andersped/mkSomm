@@ -15,11 +15,16 @@ class WinesController < ApplicationController
     respond_with Wine.find(params[:id])
   end
 
-  def upvote
+  def vote
     wine = Wine.find(params[:id])
     wine.increment!(:upvotes)
 
     respond_with wine
+  end
+
+  def destroy
+    Wine.destroy(params[:id])
+
   end
 
   private

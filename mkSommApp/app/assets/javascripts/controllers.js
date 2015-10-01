@@ -105,32 +105,49 @@ mkSomm.controller('WineCtrl', ['$scope', '$location', 'wines', function($scope, 
   $scope.home = "It Works!"
     
     $scope.addWine = function(wine){
-      console.log(wine)
+      // console.log(wine)
     
-    wines.create({
-      name: wine.Name,
-      label: wine.Labels[0].Url,
-      appellation: wine.Appellation.Name,
-      region: wine.Appellation.Region.Name,
-      varietal: wine.Varietal.Name,
-      winery: wine.Vineyard.Name,
-      price: wine.PriceRetail,
-      score: wine.Ratings.HighestScore,
-      type: wine.Type
-    })
-    // console.log(winesObject)
-
-
-
+      wines.create({
+        name: wine.Name,
+        label: wine.Labels[0].Url,
+        appellation: wine.Appellation.Name,
+        region: wine.Appellation.Region.Name,
+        varietal: wine.Varietal.Name,
+        winery: wine.Vineyard.Name,
+        price: wine.PriceRetail,
+        score: wine.Ratings.HighestScore,
+        type: wine.Type,
+      })
+     console.log(wine.vote) 
     }
-
-    // wine.Name, Label.Url, wine.Appellation.Name, wine.Appellation.Region.Name, wine.Varietal.Name, wine.Vineyard.Name, wine.PriceRetail, wine.Ratings.HighestScore, wine.Type
 
   }
 ]);
 
-mkSomm.controller('UserCtrl', ['$scope','$state','Auth', function($scope, $state, Auth){
+mkSomm.controller('UserCtrl', ['$scope','$state','Auth', 'users', function($scope, $state, Auth, users){
     $scope.test = "It works!"
+    $scope.signedIn = Auth.isAuthenticated;
+    console.log(users.wines)
+    $scope.wines = users.wines
+
+    Auth.currentUser().then(function (user){
+        $scope.user = user;
+    });
+
+    $scope.increaseVote = function(wine){
+      console.log("it works!")
+      users.voteUp(wine);
+    }
+
+    $scope.decreaseVote = function(wine){
+      users.voteDown(wine);
+    }
+
+    $scope.deleteWine = function(wine){
+      console.log(wine)
+      users.deleteWine(wine)
+    }
+
   }
 ])
 

@@ -1,1 +1,39 @@
-<h1>{{user.username}}</h1>
+<div class="page-header">
+      <h1>{{user.username}}</h1>
+</div>
+
+<h1>Your Wines</h1>
+
+
+
+<div ng-repeat="wine in wines |	orderBy:'-votes'">
+	<div class="col-lg-4 col-md-6 text-center">
+		<div class="service-box">
+	  	
+	  	<div><img src="{{wine.label}}" alt=""></div>
+	  	<div>{{wine.name}}</div>
+			     	
+			  <div><b><i>Appellation:</i></b> {{wine.appellation}}</div>
+			  <div><b><i>Region:</i></b> {{wine.region}}</div>
+			  <div><b><i>Varietal:</i></b> {{wine.varietal}}</div>
+			  <div><b><i>Winery:</i></b> {{wine.winery}}</div>
+			  <div><b><i>Retail Price:</i></b> {{wine.price | currency}}</div>
+			  <div><b><i>Rating:</i></b> {{wine.rating}}</div>
+			  <div><b><i>Type:</i></b> {{wine.type}}</div>
+      <span class="glyphicon glyphicon-thumbs-up"
+        ng-click="increaseVote(wine)"></span>
+        <span class="glyphicon glyphicon-thumbs-down"
+        ng-click="decreaseVote(wine)"></span>
+      	{{wine.vote}}
+				<br>
+
+			  <button type="button" value="{{wine}}" ng-click="deleteWine(wine)">Delete</button>
+
+
+			     				<!-- <div>Category: {{wine.category}}</div> -->
+<!-- 			     				<div ng-controller="WineCtrl"> -->
+<!-- 			  	<button type="button" ng-click="addWine(wine)">Add to List</button> -->
+				</div>
+	   </div>
+	 </div> 
+</div>

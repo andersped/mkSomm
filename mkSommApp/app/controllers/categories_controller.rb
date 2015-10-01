@@ -13,12 +13,12 @@ class CategoriesController < ApplicationController
     respond_with Category.find(params[:id])
   end
 
-  def upvote
-    category = Category.find(params[:id])
-    # post.increment!(:upvotes)
+  # def vote
+  #   category = Category.find(params[:id])
+  #   # post.increment!(:upvotes)
 
-    respond_with category
-  end
+  #   respond_with category
+  # end
 
   private
 	  def post_params

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:index, :show]
     resources :food_groups, only: [:index, :show]
-    resources :wines, only: [:create, :show] 
+    resources :wines, only: [:create, :show, :destroy] do
+      member do
+        put '/vote', :to => 'wines#vote'
+      end
+    end
     # resources :varietals, only: [:index, :show]
     get '/wines', :to => 'wines#index'
     get '/varietals/:winename', :to => 'varietals#index'
@@ -34,13 +38,14 @@ end
 #                 category GET    /categories/:id(.:format)         categories#show
 #              food_groups GET    /food_groups(.:format)            food_groups#index
 #               food_group GET    /food_groups/:id(.:format)        food_groups#show
-#                    wines GET    /wines(.:format)                  wines#index
-#                          POST   /wines(.:format)                  wines#create
-#                 new_wine GET    /wines/new(.:format)              wines#new
-#                edit_wine GET    /wines/:id/edit(.:format)         wines#edit
+#                vote_wine PUT    /wines/:id/vote(.:format)         wines#vote
+#                    wines POST   /wines(.:format)                  wines#create
 #                     wine GET    /wines/:id(.:format)              wines#show
-#                          PATCH  /wines/:id(.:format)              wines#update
-#                          PUT    /wines/:id(.:format)              wines#update
 #                          DELETE /wines/:id(.:format)              wines#destroy
+#                          GET    /wines(.:format)                  wines#index
 #                          GET    /varietals/:winename(.:format)    varietals#index
 #                          GET    /winesearches/:varietal(.:format) wine_searches#index
+
+
+
+
