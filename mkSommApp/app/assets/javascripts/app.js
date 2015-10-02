@@ -1,5 +1,23 @@
 var mkSomm = angular.module('mkSomm', ['ui.router', 'templates', 'Devise']) 
 
+// mkSomm.config(function(uiGmapGoogleMapApiProvider) {
+//     uiGmapGoogleMapApiProvider.configure({
+//            key: 'AIzaSyDk0DJPLTdPM8weqWab1DZTjHkg5Fq5kTY',
+//         v: '3.20', //defaults to latest 3.X anyhow
+//         libraries: 'weather,geometry,visualization'
+//     });
+// })
+
+
+// mkSomm.config(['uiGmapgoogle-maps.providers', function(uiGmapGoogleMapApiProvider) {
+//     uiGmapGoogleMapApiProvider.configure({
+//            key: 'AIzaSyDk0DJPLTdPM8weqWab1DZTjHkg5Fq5kTY',
+//            v: '3.20', //defaults to latest 3.X anyhow
+//           libraries: 'weather,geometry,visualization'
+//     });
+// }])
+
+
 mkSomm.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
@@ -32,6 +50,16 @@ mkSomm.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $
       url: '/wines',
       templateUrl: 'wines/_wines.html',
       controller: 'WineSearchCtrl'
+    })
+    .state('/wineries', {
+      url: '/wineries',
+      templateUrl: 'wineries/_wineries.html',
+      controller: 'WineryCtrl',
+      resolve: {
+        wineriesPromise: ['wineries', function(wineries){
+          return wineries.getAll();
+        }]
+      }
     })
     .state('/user', {
       url: '/user',

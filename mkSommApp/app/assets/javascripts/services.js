@@ -15,6 +15,7 @@ mkSomm.factory('categories', ['$http', function($http){
 
 	o.findNewVarietals = function(value){
 		console.log(value)
+		console.log("Its working!")
 		return angular.copy(value.varietals, o.varietals)
 	}
 
@@ -172,7 +173,8 @@ mkSomm.factory('wines', ['$http', function($http){
 
 mkSomm.factory('users', ['$http', function($http){
 	var o = {
-		wines: []
+		wines: [],
+		wineries: []
 	};
 
 	o.getAll = function() {
@@ -208,8 +210,34 @@ mkSomm.factory('users', ['$http', function($http){
     });
 	}
 
+	o.findWineries = function(varietal) {
+		return $http.get('/winerysearches/'+varietal+'.json').success(function(data){
+			// allFoodGroups = data
+			// console.log(allFoodGroups)
+			console.log(data)
+			// console.log(data.Products.List[0].Appellation)
+			angular.copy(data, o.wines);
+		});
+	};
+
 
 	return o;
+	}
+])
+
+mkSomm.factory('wineries', ['$http', function($http){
+	var o = {
+		wineries: []
+	};
+
+	o.getAll = function() {
+		return $http.get('http://http://protected-bastion-2209.herokuapp.com/').success(function(data){
+			console.log(data)
+			angular.copy(data, o.wineries);
+		});
+	};
+
+
 	}
 ])
 

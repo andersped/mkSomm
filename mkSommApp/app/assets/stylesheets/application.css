@@ -15,3 +15,26 @@
  *= require_self
  */
 
+.navbar-default {
+    background-color: #970A1B;
+    /*border-color: #E7E7E7;*/
+    color: white;
+}
+
+.navbar-default .navbar-header > a {
+	color: white;
+}
+
+ .navbar-default .navbar-nav > li > a {
+   color: white; /*Change active text color here*/
+}
+
+.main-image {
+	margin:0 auto;
+  display: inline;
+
+}
+
+.pairing-button{
+	background-color: #970A1B;
+}

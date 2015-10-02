@@ -6,12 +6,13 @@
 	<h4>Search By Category</h4>
 </div>
 
+<div class="container-fluid">
 	<div ng-repeat="category in categories">
-		<div class="col-lg-3 col-md-6 text-center">
-	      <div class="service-box">
-	        <button class="btn btn-primary btn-xl" value="{{category.name}}" ng-click="findVarietals(category)">{{category.name}}</button>
-	     </div>
-	   </div> 
+<!-- 		<div class="col-lg-3 col-md-6 text-center">
+	      <div class="service-box"> -->
+	        <button class="btn btn-primary btn-xl pairing-button" value="{{category.name}}" ng-click="findVarietals(category)">{{category.name}}</button>
+<!-- 	     </div>
+	   </div>  -->
 	</div>
 	
 <br>
@@ -57,4 +58,6 @@
 	     			</div>
 	  			</div> 
 			</div>	
+	</ul>
+</div>
 

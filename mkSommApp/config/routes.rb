@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get '/wines', :to => 'wines#index'
     get '/varietals/:winename', :to => 'varietals#index'
     get '/winesearches/:varietal', :to => 'wine_searches#index'
+    get '/winerysearches/:varietal', :to => 'winery_searches#index'
 
 end
 

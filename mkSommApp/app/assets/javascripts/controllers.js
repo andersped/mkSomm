@@ -148,11 +148,31 @@ mkSomm.controller('UserCtrl', ['$scope','$state','Auth', 'users', function($scop
       users.deleteWine(wine)
     }
 
+    $scope.findWineries = function(value){
+    var varietal = value
+    users.findWineries(varietal)
+    // console.log(foodGroups.wines)
+    // console.log($scope.wines[0])
+
+    } 
+
   }
 ])
 
-mkSomm.controller('AuthCtrl', ['$scope','$state','Auth', function($scope, $state, Auth){
+mkSomm.controller("WineryCtrl", ['$scope', 'wineries',  function($scope, wineries) {
+    // Do stuff with your $scope.
+    // Note: Some of the directives require at least something to be defined originally!
+    // e.g. $scope.markers = []
 
+    // uiGmapGoogleMapApi is a promise.
+    // The "then" callback function provides the google.maps object.
+    // uiGmapGoogleMapApi.then(function(maps) {
+
+    // });
+  }
+]);
+
+mkSomm.controller('AuthCtrl', ['$scope','$state','Auth', function($scope, $state, Auth){
 
   $scope.login = function() {
     Auth.login($scope.user).then(function(){
