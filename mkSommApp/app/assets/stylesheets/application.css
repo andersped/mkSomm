@@ -100,7 +100,7 @@
 
 body { 
   background: url("background/WomenSavySomm_back.png"); 
-  background-repeat; no-repeat;  
+  background-repeat: no-repeat;  
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
