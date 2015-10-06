@@ -1,81 +1,91 @@
-<div class="page-header">
-      <h1>Food & Wine Pairing</h1>
-</div>
+<div ng-include="'nav/_nav.html'"></div>
 
-<div class="row">
-	  	
-	<div class="col-md-6" style="text-align: center;">
-
-		<div class="row">
-		<div ng-repeat="foodGroup in foodGroups">
-			<!-- <div class="col-lg-3 col-md-6 text-center"> -->
-		      <!-- <div class="service-box"> -->
-		      	<div class="col-md-3">
-		        		<button class="btn btn-primary btn-xl pairing-button" value="{{foodGroup.name}}" ng-click="newFood(foodGroup)">{{foodGroup.name}}</button>
-						</div>
-		</div>  		
-	
-		     <!-- </div> -->
-		   <!-- </div> --> 
-		</div>
-	</div>
-
-<!-- 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br> -->
-
-
-	  	
-	<div class="col-md-6" style="text-align: center;">
+<div class="row" style="color: white;">
+	<div class="col-md-4"></div>
+	<div class="col-md-4" style="text-align: center;">
 		
 	<!-- 	<div class="col-lg-3 col-md-6 text-center"> -->
 			<div ng-repeat="food in foods">	
 				<div><i>{{food}}</i></div>
 			</div>
+			<br>
+			<br>
 	<!-- 	</div> -->
 		
 	</div>
+	<div class="col-md-4"></div>
 </div>
-	<div>
-		<button type="button" class="btn btn-primary btn-xl pairing-button" ng-click="findVarietals()">Find Varietals</button>	
-	</div>
+
+<div class="container" ng-show="pickedFood" style="color: white;">
+
+
+<div class="col-md-12">
+    <div class="inner row">
+        <!-- h1>Best of {{dest.name}}</h1> -->
+       <div class="col-md-4"></div>
+			<div class="col-md-4">
+			<div class="inner row">
+        <div class="col-lg-4 scale-fade" ng-repeat="foodGroup in foodGroups">
+                <img ng-src="{{foodGroup.image_url}}" alt="" class="img-responsive; foodPictures" ng-click="newFood(foodGroup)">
+                <div>
+								{{foodGroup.name}}
+								</div>
+        </div> 
+			</div>
+			</div>
+			<div class="col-md-4"></div>
+    </div> <!-- inner -->
+</div> <!-- bestof -->
+</div>
+<br>
+<br>
+
+
+
 
 	
-		<div ng-repeat="varietal in varietals">
-			<ul>
-		      <div class="service-box">
-		        <li ng-click="clicked=true"><a href="">{{varietal.name}}</a></li>
-		        <div>
-		        	<ul ng-show="clicked">
-		        		<li><b>Aroma:</b> {{varietal.aroma}}</li>
-								<li><b>Earth:</b> {{varietal.earth}}</li>
-								<li><b>Floral:</b> {{varietal.floral}}</li>
-								<li><b>Fruit:</b> {{varietal.fruit}}</li>
-								<li><b>Herbal:</b> {{varietal.herbal}}</li>
-								<li><b>Oak:</b> {{varietal.oak}}</li>
-								<li><b>Other:</b> {{varietal.other}}</li>
-								<li><b>Spice:</b> {{varietal.spice}}</li>
-								<li><b>Structure:</b> {{varietal.structure}}</li>
-								<li><b>Visual:</b> {{varietal.visual}}</li>
-								<button ng-click="clicked=false">Close</button>
-		        	</ul>
+	<div class="varietalButton">
+		<button type="button" class="btn btn-primary btn-xl pairing-button" ng-click="findVarietals(); pickedFood=false; showVarietals=true">Find Varietals</button>	
+		<button type="button" class="btn btn-primary btn-xl pairing-button" ng-click="reset(); pickedFood=true; showVarietals=false">Start Again</button>
+	</div>
+
+	<div class="row" ng-show="showVarietals" style="color: white;">
+		<div ng-repeat="varietal in varietals" class="slide-top; col-md-3">
+		      <div class="service-box; varietalTypes">
+		        <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{varietal.name}}</button>
+		        
+		        <div ng-show="isCollapsed">
+			        <div class="well well-lg" style="color: black;">
+			        	<ul>
+			        		Tasting Notes:
+			        		<li><b>Aroma:</b> {{varietal.aroma}}</li>
+									<li><b>Earth:</b> {{varietal.earth}}</li>
+									<li><b>Floral:</b> {{varietal.floral}}</li>
+									<li><b>Fruit:</b> {{varietal.fruit}}</li>
+									<li><b>Herbal:</b> {{varietal.herbal}}</li>
+									<li><b>Oak:</b> {{varietal.oak}}</li>
+									<li><b>Other:</b> {{varietal.other}}</li>
+									<li><b>Spice:</b> {{varietal.spice}}</li>
+									<li><b>Structure:</b> {{varietal.structure}}</li>
+									<li><b>Visual:</b> {{varietal.visual}}</li>
+			        	</ul>
+			        	<!-- Search wine.com api -->
+			        	<button type="button" class="btn btn-primary btn-xl pairing-button" value="{{varietal.name}}" ng-click="findWines(varietal.name); search=true; isCollapsed=false">Search {{varietal.name}}</button>
+			       	</div>
 		       	</div>
-		     </div>
+		     
 		     	<!-- Search wine.com api -->
-				<button type="button" value="{{varietal.name}}" ng-click="findWines(varietal.name); search=true">Search {{varietal.name}}</button>
-			</ul> 	
+				</div>
+		</div> 	
+	</div>
 
 				<!-- Make this an ng-show if the Search button is clicked -->
-				<div ng-repeat="wine in wines |orderBy:'PriceRetail'">
+				<div ng-repeat="wine in wines |orderBy:'PriceRetail'" style="color: white;">
 						<div class="col-lg-4 col-md-4 text-center">
 		      		<div class="service-box">
-		     				<div>{{wine.Name}}</div>
 								<div ng-repeat="Label in wine.Labels">
 		     					<div><img src="{{Label.Url}}" height="72px" width="80px" alt=""></div>
-		     					<div><button>Add to Favorites</button></div>
+		     						<div>{{wine.Name}}</div>
 				     				<div><b><i>Appellation:</i></b> {{wine.Appellation.Name}}</div>
 				     				<div><b><i>Region:</i></b> {{wine.Appellation.Region.Name}}</div>
 				     				<div><b><i>Varietal:</i></b> {{wine.Varietal.Name}}</div>
@@ -85,12 +95,11 @@
 				     				<div><b><i>Type:</i></b> {{wine.Type}}</div>
 				     				<div>Category:{{varietal.category}}</div>
 				     				<div ng-controller="WineCtrl">
-				     					<button type="button" ng-click="addWine(wine)">Add to List</button>
+				     					<button type="button" style="color: black;" ng-click="addWine(wine); reset()">Add to List</button>
 				     				</div>
 				     		</div>
 		     			</div>
 		  			</div> 
 				</div>
-		</div>
-
+	
 

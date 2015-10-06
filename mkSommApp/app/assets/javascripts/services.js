@@ -8,7 +8,6 @@ mkSomm.factory('categories', ['$http', function($http){
 
 	o.getAll = function() {
 		return $http.get('/categories.json').success(function(data){
-			// console.log(data)
 			angular.copy(data, o.categories);
 		});
 	};
@@ -40,18 +39,20 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 	o.getAll = function() {
 		return $http.get('/food_groups.json').success(function(data){
 			allFoodGroups = data
-			// console.log(allFoodGroups)
+			console.log(allFoodGroups)
 			angular.copy(data, o.foodGroups);
 		});
 	};
 	
+	o.resetValues = function(){
+		return angular.copy(allFoodGroups, o.foodGroups)
+	}
+
 	o.nextSelection = function(value){
-		// console.log(value)
 	
 		if (typeof value.pairings != "undefined"){
 				return angular.copy(value.pairings, o.foodGroups)
 		} else if (typeof value.foods != "undefined"){
-				// o.category.push(value.categories)
 				if (value.foods.length < 1) {
 					o.foods.push(value.name)
 					return angular.copy(allFoodGroups, o.foodGroups)
@@ -65,15 +66,11 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 
 	o.countFoodGroups = function(value){
 		foodPickArray = []
-		// console.log(foodPickArray)
-
 	}
 
 	o.addToCategories = function(value){
 		if (value.foods){
 			o.category.push(value.categories)
-			// console.log(o.category)
-			// return angular.copy(value.categories, o.category)
 		}
 	}
 
@@ -124,24 +121,18 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 			} else if (wineSelection == 1){
 				wineSelection = "Dessert"
 			}
-			// console.log(wineSelection)
 
 			return $http.get('/varietals/'+wineSelection+'.json').success(function(data){
 				console.log(data)
-			// console.log(allFoodGroups)
 				angular.copy(data, o.varietals);
 		})
-	// }
+
 	
 
 	}
 
 	o.findWines = function(varietal) {
-		return $http.get('/winesearches/'+varietal+'.json').success(function(data){
-			// allFoodGroups = data
-			// console.log(allFoodGroups)
-			console.log(data.Products.List)
-			// console.log(data.Products.List[0].Appellation)
+		return $http.get('/winesearches/'+varietal+'.json').success(function(data){			
 			angular.copy(data.Products.List, o.wines);
 		});
 	};
@@ -174,12 +165,13 @@ mkSomm.factory('wines', ['$http', function($http){
 mkSomm.factory('users', ['$http', function($http){
 	var o = {
 		wines: [],
-		wineries: []
+		wineries: [],
+		locations: []
 	};
 
 	o.getAll = function() {
 		return $http.get('/wines.json').success(function(data){
-			// console.log(data)
+			
 			angular.copy(data, o.wines);
 		});
 	};
@@ -196,7 +188,7 @@ mkSomm.factory('users', ['$http', function($http){
 	};
 
 	o.voteUp = function(wine){
-		// console.log("It Works!")
+		
 		return $http.put('/wines/' + wine.id + '/vote.json')
     	.success(function(data){
       	wine.vote += 1;
@@ -212,11 +204,25 @@ mkSomm.factory('users', ['$http', function($http){
 
 	o.findWineries = function(varietal) {
 		return $http.get('/winerysearches/'+varietal+'.json').success(function(data){
-			// allFoodGroups = data
-			// console.log(allFoodGroups)
-			console.log(data)
-			// console.log(data.Products.List[0].Appellation)
-			angular.copy(data, o.wines);
+			userWines = [];
+			wineryArray = [];
+			
+			// for (i = 0; i < o.wines.length; i++){
+			// 	userWines.push(o.wines[i].varietal)
+			// }
+			// for (i = 0; i < data[0].lists.length; i++){
+				
+			// 	for (j = 0; j < data[0].lists[i].varietals.length; j++){
+					
+			// 		if (data[0].lists[i].varietals[j].name == userWines[0]){
+						
+			// 			// console.log("Shit Works!")
+			// 			wineryArray.push(data[0].lists[i])
+			// 				}
+			// 		}
+
+			// 	}
+			angular.copy(data[0].lists, o.wineries);
 		});
 	};
 

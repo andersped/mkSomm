@@ -1,9 +1,9 @@
 # Wine.destroy_all
+Varietal.destroy_all
 Category.destroy_all
 FoodGroup.destroy_all
-Pairing.destroy_all
-Varietal.destroy_all
 Food.destroy_all
+Pairing.destroy_all
 
 # ---------------------- Add Varietal and Descriptions  -------------------------
 
@@ -179,15 +179,15 @@ v65 = Varietal.create(name: "Pedro Ximenez", visual: "", aroma: "", fruit: "", f
 
 
 
-c1 = Category.create(name: "Bold Red")
-c2 = Category.create(name: "Medium Red")
-c3 = Category.create(name: "Light Red")
-c4 = Category.create(name: "Rose")
-c5 = Category.create(name: "Rich White")
-c6 = Category.create(name: "Light White")
-c7 = Category.create(name: "Sparkling")
-c8 = Category.create(name: "Sweet White")
-c9 = Category.create(name: "Dessert")
+c1 = Category.create(name: "Bold Red", image: File.new("#{Rails.root}/app/assets/images/winecategories/winebottle.jpg"))
+c2 = Category.create(name: "Medium Red", image: File.new("#{Rails.root}/app/assets/images/winecategories/winebottle.jpg"))
+c3 = Category.create(name: "Light Red", image: File.new("#{Rails.root}/app/assets/images/winecategories/winebottle.jpg"))
+c4 = Category.create(name: "Rose", image: File.new("#{Rails.root}/app/assets/images/winecategories/winebottle.jpg"))
+c5 = Category.create(name: "Rich White", image: File.new("#{Rails.root}/app/assets/images/winecategories/winebottle.jpg"))
+c6 = Category.create(name: "Light White", image: File.new("#{Rails.root}/app/assets/images/winecategories/winebottle.jpg"))
+c7 = Category.create(name: "Sparkling", image: File.new("#{Rails.root}/app/assets/images/winecategories/winebottle.jpg"))
+c8 = Category.create(name: "Sweet White", image: File.new("#{Rails.root}/app/assets/images/winecategories/winebottle.jpg"))
+c9 = Category.create(name: "Dessert", image: File.new("#{Rails.root}/app/assets/images/winecategories/winebottle.jpg"))
 
 # ------------ Add Varietals to Categories ----------------- 
 
@@ -276,64 +276,64 @@ c9.varietals << v65
 
 # ---------------------- Add Pairings to Food_Group -------------------------
 
-f1 = FoodGroup.create(name: "Meat")
-f2 = FoodGroup.create(name: "Preparation")
-f3 = FoodGroup.create(name: "Dairy")
-f4 = FoodGroup.create(name: "Vegetable")
-f5 = FoodGroup.create(name: "Herb and Spice")
-f6 = FoodGroup.create(name: "Starch")
-f7 = FoodGroup.create(name: "Sweet")
+f1 = FoodGroup.create(name: "Meat", image: File.new("#{Rails.root}/app/assets/images/foodGroup/meat.jpg"))
+f2 = FoodGroup.create(name: "Preparation", image: File.new("#{Rails.root}/app/assets/images/foodGroup/preparation.jpg"))
+f3 = FoodGroup.create(name: "Dairy", image: File.new("#{Rails.root}/app/assets/images/foodGroup/dairy.jpg"))
+f4 = FoodGroup.create(name: "Vegetable", image: File.new("#{Rails.root}/app/assets/images/foodGroup/vegetables.jpeg"))
+f5 = FoodGroup.create(name: "Herb and Spice", image: File.new("#{Rails.root}/app/assets/images/foodGroup/herbandspice.jpeg")) 
+f6 = FoodGroup.create(name: "Starch", image: File.new("#{Rails.root}/app/assets/images/foodGroup/starch.jpeg"))
+f7 = FoodGroup.create(name: "Sweet", image: File.new("#{Rails.root}/app/assets/images/foodGroup/sweets.jpg"))
 
 
 
 #  Meat Food Group
-p1 = Pairing.create(name: "Red Meat")
-p2 = Pairing.create(name: "Cured Meat")
-p3 = Pairing.create(name: "Pork")
-p4 = Pairing.create(name: "Poultry")
-p5 = Pairing.create(name: "Mollusk")
-p6 = Pairing.create(name: "Fish and Raw Fish")
-p7 = Pairing.create(name: "Lobster and Shellfish")
+p1 = Pairing.create(name: "Red Meat", image: File.new("#{Rails.root}/app/assets/images/pairings/redmeat.jpg"))
+p2 = Pairing.create(name: "Cured Meat", image: File.new("#{Rails.root}/app/assets/images/pairings/curedmeat.jpg"))
+p3 = Pairing.create(name: "Pork", image: File.new("#{Rails.root}/app/assets/images/pairings/pork.jpeg"))
+p4 = Pairing.create(name: "Poultry", image: File.new("#{Rails.root}/app/assets/images/pairings/poultry.jpeg"))
+p5 = Pairing.create(name: "Mollusk", image: File.new("#{Rails.root}/app/assets/images/pairings/mollusk.jpeg"))
+p6 = Pairing.create(name: "Fish and Raw Fish", image: File.new("#{Rails.root}/app/assets/images/pairings/fish.jpg"))
+p7 = Pairing.create(name: "Lobster and Shellfish", image: File.new("#{Rails.root}/app/assets/images/pairings/lobsterandshellfish.jpeg"))
 
 # Preparation Food Group
-p8 = Pairing.create(name: "Grilled and Barbecued")
-p9 = Pairing.create(name: "Sauteed or Fried")
-p10 = Pairing.create(name: "Smoked")
-p11 = Pairing.create(name: "Roasted")
-p12 = Pairing.create(name: "Poached or Steamed")
+p8 = Pairing.create(name: "Grilled and Barbecued", image: File.new("#{Rails.root}/app/assets/images/preparation/Grilledorbarbecued.jpg"))
+p9 = Pairing.create(name: "Sauteed or Fried", image: File.new("#{Rails.root}/app/assets/images/preparation/Sauteed.jpg"))
+p10 = Pairing.create(name: "Smoked", image: File.new("#{Rails.root}/app/assets/images/preparation/Smoked.jpg"))
+p11 = Pairing.create(name: "Roasted", image: File.new("#{Rails.root}/app/assets/images/preparation/Roasted.jpg"))
+p12 = Pairing.create(name: "Poached or Steamed", image: File.new("#{Rails.root}/app/assets/images/preparation/Poached.jpg"))
 
 # Dairy Food Group
-p13 = Pairing.create(name: "Soft Cheese and Cream")
-p14 = Pairing.create(name: "Pungent Cheese")
-p15 = Pairing.create(name: "Hard Cheese")
+p13 = Pairing.create(name: "Soft Cheese and Cream", image: File.new("#{Rails.root}/app/assets/images/pairings/softcheese.jpg"))
+p14 = Pairing.create(name: "Pungent Cheese", image: File.new("#{Rails.root}/app/assets/images/pairings/pungentcheese.jpeg"))
+p15 = Pairing.create(name: "Hard Cheese", image: File.new("#{Rails.root}/app/assets/images/pairings/hardcheese.jpeg"))
 
 # Vegetable Food Group
-p16 = Pairing.create(name: "Alliums")
-p17 = Pairing.create(name: "Green Vegetables")
-p18 = Pairing.create(name: "Root Vegetables and Squash")
-p19 = Pairing.create(name: "Nightshades")
-p20 = Pairing.create(name: "Funghi")
-p21 = Pairing.create(name: "Nuts and Seeds")
-p22 = Pairing.create(name: "Beans and Peas")
+p16 = Pairing.create(name: "Alliums", image: File.new("#{Rails.root}/app/assets/images/pairings/alliums.jpeg"))
+p17 = Pairing.create(name: "Green Vegetables", image: File.new("#{Rails.root}/app/assets/images/pairings/greenvegetables.jpeg"))
+p18 = Pairing.create(name: "Root Vegetables and Squash", image: File.new("#{Rails.root}/app/assets/images/pairings/rootvegetables.jpeg"))
+p19 = Pairing.create(name: "Nightshades", image: File.new("#{Rails.root}/app/assets/images/pairings/nightshades.jpg"))
+p20 = Pairing.create(name: "Funghi", image: File.new("#{Rails.root}/app/assets/images/pairings/fungi.jpeg"))
+p21 = Pairing.create(name: "Nuts and Seeds", image: File.new("#{Rails.root}/app/assets/images/pairings/nutsandseeds.jpg"))
+p22 = Pairing.create(name: "Beans and Peas", image: File.new("#{Rails.root}/app/assets/images/pairings/beansandpeas.jpeg"))
 
 # Herbs and Spices Food Group
-p23 = Pairing.create(name: "Black Pepper")
-p24 = Pairing.create(name: "Red Pepper")
-p25 = Pairing.create(name: "Hot and Spicy")
-p26 = Pairing.create(name: "Herbs")
-p27 = Pairing.create(name: "Baking Spices")
-p28 = Pairing.create(name: "Exotic and Aromatic")
+p23 = Pairing.create(name: "Black Pepper", image: File.new("#{Rails.root}/app/assets/images/herbandspice/blackpepper.jpeg"))
+p24 = Pairing.create(name: "Red Pepper", image: File.new("#{Rails.root}/app/assets/images/pairings/redpepper.jpg"))
+p25 = Pairing.create(name: "Hot and Spicy", image: File.new("#{Rails.root}/app/assets/images/pairings/hotandspicy.jpg"))
+p26 = Pairing.create(name: "Herbs", image: File.new("#{Rails.root}/app/assets/images/pairings/herbs.jpeg"))
+p27 = Pairing.create(name: "Baking Spices", image: File.new("#{Rails.root}/app/assets/images/pairings/bakingspices.jpg"))
+p28 = Pairing.create(name: "Exotic and Aromatic", image: File.new("#{Rails.root}/app/assets/images/pairings/exoticandaromatic.jpg"))
 
 # Starch Food Group
-p29 = Pairing.create(name: "White Starches")
-p30 = Pairing.create(name: "Whole Wheat Grains")
-p31 = Pairing.create(name: "Sweet Root Vegetables")
-p32 = Pairing.create(name: "Potato")
+p29 = Pairing.create(name: "White Starches", image: File.new("#{Rails.root}/app/assets/images/pairings/whitestarches.jpeg"))
+p30 = Pairing.create(name: "Whole Wheat Grains", image: File.new("#{Rails.root}/app/assets/images/pairings/wholewheatgrains.jpeg"))
+p31 = Pairing.create(name: "Sweet Root Vegetables", image: File.new("#{Rails.root}/app/assets/images/pairings/rootvegetables.jpeg"))
+p32 = Pairing.create(name: "Potato", image: File.new("#{Rails.root}/app/assets/images/pairings/potato.jpeg"))
 
 # Sweet Food Group
-p33 = Pairing.create(name: "Fruit and Berries")
-p34 = Pairing.create(name: "Vanilla and Caramel")
-p35 = Pairing.create(name: "Chocolate and Coffee")
+p33 = Pairing.create(name: "Fruit and Berries", image: File.new("#{Rails.root}/app/assets/images/pairings/fruitandberries.jpg"))
+p34 = Pairing.create(name: "Vanilla and Caramel", image: File.new("#{Rails.root}/app/assets/images/pairings/vanillaandcaramel.jpg"))
+p35 = Pairing.create(name: "Chocolate and Coffee", image: File.new("#{Rails.root}/app/assets/images/sweet/chocolateandcoffee.jpeg"))
 
 
 # Meat Array
@@ -565,154 +565,154 @@ c9.pairings << p34
 # ---------------------- Add Pairings to Food_Group -------------------------
 
 # Red Meat
-d1 = Food.create(name: "Beef")
-d2 = Food.create(name: "Lamb")
-d3 = Food.create(name: "Venison")
+d1 = Food.create(name: "Beef", image: File.new("#{Rails.root}/app/assets/images/redmeats/Beef.jpg"))
+d2 = Food.create(name: "Lamb", image: File.new("#{Rails.root}/app/assets/images/redmeats/Lamb.jpg"))
+d3 = Food.create(name: "Venison", image: File.new("#{Rails.root}/app/assets/images/redmeats/Venison.jpg"))
 
 # Cured Meat
-d4 = Food.create(name: "Salami")
-d5 = Food.create(name: "Prosciutto")
-d6 = Food.create(name: "Bacon")
+d4 = Food.create(name: "Salami", image: File.new("#{Rails.root}/app/assets/images/redmeats/salami.jpg"))
+d5 = Food.create(name: "Prosciutto", image: File.new("#{Rails.root}/app/assets/images/redmeats/Prociutto.jpg"))
+d6 = Food.create(name: "Bacon", image: File.new("#{Rails.root}/app/assets/images/redmeats/Bacon.jpg"))
 
 # Pork Foods
-d7 = Food.create(name: "Roast")
-d8 = Food.create(name: "Tenderloin")
-d9 = Food.create(name: "Pork Chop")
+d7 = Food.create(name: "Roast", image: File.new("#{Rails.root}/app/assets/images/redmeats/Porkroast.jpg"))
+d8 = Food.create(name: "Tenderloin", image: File.new("#{Rails.root}/app/assets/images/redmeats/Porktenderloin.jpg"))
+d9 = Food.create(name: "Pork Chop", image: File.new("#{Rails.root}/app/assets/images/redmeats/Porkchop.jpg"))
 
 # Poultry Foods
-d10 = Food.create(name: "Chicken")
-d11 = Food.create(name: "Duck")
-d12 = Food.create(name: "Turkey")
+d10 = Food.create(name: "Chicken", image: File.new("#{Rails.root}/app/assets/images/redmeats/Chicken.jpg"))
+d11 = Food.create(name: "Duck", image: File.new("#{Rails.root}/app/assets/images/redmeats/Duck.jpg"))
+d12 = Food.create(name: "Turkey", image: File.new("#{Rails.root}/app/assets/images/redmeats/Turkey.jpg"))
 
 # Mollusk Foods
-d13 = Food.create(name: "Oyster")
-d14 = Food.create(name: "Mussel")
-d15 = Food.create(name: "Clam")
+d13 = Food.create(name: "Oyster", image: File.new("#{Rails.root}/app/assets/images/redmeats/Oysters.jpg"))
+d14 = Food.create(name: "Mussel", image: File.new("#{Rails.root}/app/assets/images/redmeats/Mussel.jpg"))
+d15 = Food.create(name: "Clam", image: File.new("#{Rails.root}/app/assets/images/redmeats/Clams.jpg"))
 
 # Fish Foods 
-d16 = Food.create(name: "Tune")
-d17 = Food.create(name: "Cod")
-d18 = Food.create(name: "Trout")
-d19 = Food.create(name: "Bass")
+d16 = Food.create(name: "Tune", image: File.new("#{Rails.root}/app/assets/images/redmeats/Tuna.jpg"))
+d17 = Food.create(name: "Cod", image: File.new("#{Rails.root}/app/assets/images/redmeats/cod.jpg"))
+d18 = Food.create(name: "Trout", image: File.new("#{Rails.root}/app/assets/images/redmeats/Trout.jpg"))
+d19 = Food.create(name: "Bass", image: File.new("#{Rails.root}/app/assets/images/redmeats/Bass.jpg"))
 
 # Shell Fish Foods
-d20 = Food.create(name: "Prawn")
-d21 = Food.create(name: "Crab")
-d22 = Food.create(name: "Langoustin")
+d20 = Food.create(name: "Prawn", image: File.new("#{Rails.root}/app/assets/images/redmeats/Prawn.jpg"))
+d21 = Food.create(name: "Crab", image: File.new("#{Rails.root}/app/assets/images/redmeats/Crab.jpg"))
+d22 = Food.create(name: "Langoustin", image: File.new("#{Rails.root}/app/assets/images/redmeats/Langoustine.jpg"))
 
 # Soft Cheese Foods
-d23 = Food.create(name: "Brie")
-d24 = Food.create(name: "Mascarpone")
-d25 = Food.create(name: "Creame Fraiche")
+d23 = Food.create(name: "Brie", image: File.new("#{Rails.root}/app/assets/images/dairy/brie.jpeg"))
+d24 = Food.create(name: "Mascarpone", image: File.new("#{Rails.root}/app/assets/images/dairy/mascarpone.jpeg"))
+d25 = Food.create(name: "Creame Fraiche", image: File.new("#{Rails.root}/app/assets/images/dairy/cremefraiche.jpeg"))
 
 # Pungent Cheese Foods
-d26 = Food.create(name: "Blue")
-d27 = Food.create(name: "Gargonzola")
-d28 = Food.create(name: "Stilton")
-d29 = Food.create(name: "Roquefort")
+d26 = Food.create(name: "Blue", image: File.new("#{Rails.root}/app/assets/images/dairy/bluecheese.jpeg"))
+d27 = Food.create(name: "Gargonzola", image: File.new("#{Rails.root}/app/assets/images/dairy/gargonzola.jpeg"))
+d28 = Food.create(name: "Stilton", image: File.new("#{Rails.root}/app/assets/images/dairy/stiltoncheese.jpeg"))
+d29 = Food.create(name: "Roquefort", image: File.new("#{Rails.root}/app/assets/images/dairy/roquefort.jpeg"))
 
 # Hard Cheese Foods
-d30 = Food.create(name: "Cheddar")
-d31 = Food.create(name: "Pecorino")
-d32 = Food.create(name: "Manchego")
-d33 = Food.create(name: "Asiago")
-d34 = Food.create(name: "Parmesan")
+d30 = Food.create(name: "Cheddar", image: File.new("#{Rails.root}/app/assets/images/dairy/cheddar.jpeg"))
+d31 = Food.create(name: "Pecorino", image: File.new("#{Rails.root}/app/assets/images/dairy/pecorino.jpeg"))
+d32 = Food.create(name: "Manchego", image: File.new("#{Rails.root}/app/assets/images/dairy/manchego.jpeg"))
+d33 = Food.create(name: "Asiago", image: File.new("#{Rails.root}/app/assets/images/dairy/asiago.jpeg"))
+d34 = Food.create(name: "Parmesan", image: File.new("#{Rails.root}/app/assets/images/dairy/parmigiana.jpeg"))
 
 # Allums Foods
-d35 = Food.create(name: "Onion")
-d36 = Food.create(name: "Shallot")
-d37 = Food.create(name: "Garlic")
-d38 = Food.create(name: "Scallion")
+d35 = Food.create(name: "Onion", image: File.new("#{Rails.root}/app/assets/images/vegetables/onion.jpeg"))
+d36 = Food.create(name: "Shallot", image: File.new("#{Rails.root}/app/assets/images/vegetables/shallot.jpeg"))
+d37 = Food.create(name: "Garlic", image: File.new("#{Rails.root}/app/assets/images/vegetables/garlic.jpeg"))
+d38 = Food.create(name: "Scallion", image: File.new("#{Rails.root}/app/assets/images/vegetables/scallion.jpeg"))
 
 # Green Vegetables Foods
-d39 = Food.create(name: "Green Bean")
-d40 = Food.create(name: "Kale")
-d41 = Food.create(name: "Lettuce")
+d39 = Food.create(name: "Green Bean", image: File.new("#{Rails.root}/app/assets/images/vegetables/greenbean.jpeg"))
+d40 = Food.create(name: "Kale", image: File.new("#{Rails.root}/app/assets/images/vegetables/kale.jpeg"))
+d41 = Food.create(name: "Lettuce", image: File.new("#{Rails.root}/app/assets/images/vegetables/lettuce.jpeg"))
 
 # Root Vegetables and Squash Foods
-d42 = Food.create(name: "Turnip")
-d43 = Food.create(name: "Butternut")
-d44 = Food.create(name: "Pumpkin")
-d45 = Food.create(name: "Delicate")
-d46 = Food.create(name: "Carrot")
+d42 = Food.create(name: "Turnip", image: File.new("#{Rails.root}/app/assets/images/vegetables/turnip.jpeg"))
+d43 = Food.create(name: "Butternut", image: File.new("#{Rails.root}/app/assets/images/vegetables/butternutsquash.jpeg"))
+d44 = Food.create(name: "Pumpkin", image: File.new("#{Rails.root}/app/assets/images/vegetables/pumpkin.jpeg"))
+d45 = Food.create(name: "Delicate", image: File.new("#{Rails.root}/app/assets/images/vegetables/delicatasquash.jpeg"))
+d46 = Food.create(name: "Carrot", image: File.new("#{Rails.root}/app/assets/images/vegetables/carrot.jpeg"))
 
 # Nightshades Foods 
-d47 = Food.create(name: "Tomato")
-d48 = Food.create(name: "Eggplant")
-d49 = Food.create(name: "Bell Pepper")
+d47 = Food.create(name: "Tomato", image: File.new("#{Rails.root}/app/assets/images/vegetables/tomatoe.jpeg"))
+d48 = Food.create(name: "Eggplant", image: File.new("#{Rails.root}/app/assets/images/vegetables/eggplant.jpeg"))
+d49 = Food.create(name: "Bell Pepper", image: File.new("#{Rails.root}/app/assets/images/vegetables/bellpepper.jpeg"))
 
 # Funghi Foods
-d50 = Food.create(name: "Crimini")
-d51 = Food.create(name: "Shiitake")
-d52 = Food.create(name: "Chanterelle")
+d50 = Food.create(name: "Crimini", image: File.new("#{Rails.root}/app/assets/images/vegetables/criminimushrooms.jpeg"))
+d51 = Food.create(name: "Shiitake", image: File.new("#{Rails.root}/app/assets/images/vegetables/shiitakemushrooms.jpeg"))
+d52 = Food.create(name: "Chanterelle", image: File.new("#{Rails.root}/app/assets/images/vegetables/chanterellemushrooms.jpeg"))
 
 # Nuts and Seeds Foods
-d53 = Food.create(name: "Peanut")
-d54 = Food.create(name: "Pecon")
-d55 = Food.create(name: "Almond")
-d56 = Food.create(name: "Sesame")
+d53 = Food.create(name: "Peanut", image: File.new("#{Rails.root}/app/assets/images/vegetables/peanuts.jpeg"))
+d54 = Food.create(name: "Pecon", image: File.new("#{Rails.root}/app/assets/images/vegetables/pecans.jpeg"))
+d55 = Food.create(name: "Almond", image: File.new("#{Rails.root}/app/assets/images/vegetables/almonds.jpeg"))
+d56 = Food.create(name: "Sesame", image: File.new("#{Rails.root}/app/assets/images/vegetables/sesameseeds.jpeg"))
 
 # Beans and Peas Foods
-d57 = Food.create(name: "Lentil")
-d58 = Food.create(name: "Pinto")
-d59 = Food.create(name: "Chickpea")
+d57 = Food.create(name: "Lentil", image: File.new("#{Rails.root}/app/assets/images/vegetables/lentil.jpeg"))
+d58 = Food.create(name: "Pinto", image: File.new("#{Rails.root}/app/assets/images/vegetables/pintobeans.jpeg"))
+d59 = Food.create(name: "Chickpea", image: File.new("#{Rails.root}/app/assets/images/vegetables/chickpeas.jpeg"))
 
 # Red Pepper Foods
-d60 = Food.create(name: "Ancho")
-d61 = Food.create(name: "Aleppo")
-d62 = Food.create(name: "Chipotle")
-d63 = Food.create(name: "Chili")
+d60 = Food.create(name: "Ancho", image: File.new("#{Rails.root}/app/assets/images/herbandspice/anchopepper.jpeg"))
+d61 = Food.create(name: "Aleppo", image: File.new("#{Rails.root}/app/assets/images/herbandspice/aleppopepper.jpeg"))
+d62 = Food.create(name: "Chipotle", image: File.new("#{Rails.root}/app/assets/images/herbandspice/chipotlepepper.jpeg"))
+d63 = Food.create(name: "Chili", image: File.new("#{Rails.root}/app/assets/images/herbandspice/chilipepper.jpeg"))
 
 # Hot and Spicy Foods
-d64 = Food.create(name: "Hot Sauce")
-d65 = Food.create(name: "Habenero")
-d66 = Food.create(name: "Sichuan")
+d64 = Food.create(name: "Hot Sauce", image: File.new("#{Rails.root}/app/assets/images/herbandspice/hotsauce.jpeg"))
+d65 = Food.create(name: "Habenero", image: File.new("#{Rails.root}/app/assets/images/herbandspice/habenerosauce.jpeg"))
+d66 = Food.create(name: "Sichuan", image: File.new("#{Rails.root}/app/assets/images/herbandspice/sicuanpepper.jpeg"))
 
 # Herb Foods
-d67 = Food.create(name: "Thyme")
-d68 = Food.create(name: "Oregano")
-d69 = Food.create(name: "Basi")
-d70 = Food.create(name: "Tarragon")
+d67 = Food.create(name: "Thyme", image: File.new("#{Rails.root}/app/assets/images/herbandspice/thyme.jpeg"))
+d68 = Food.create(name: "Oregano", image: File.new("#{Rails.root}/app/assets/images/herbandspice/oregano.jpeg"))
+d69 = Food.create(name: "Basi", image: File.new("#{Rails.root}/app/assets/images/herbandspice/basil.jpeg"))
+d70 = Food.create(name: "Tarragon", image: File.new("#{Rails.root}/app/assets/images/herbandspice/tarragon.jpeg"))
 
 # Baking Spices Foods
-d71 = Food.create(name: "Cinnamon")
-d72 = Food.create(name: "Clove")
-d73 = Food.create(name: "Allspice")
-d74 = Food.create(name: "Mace")
+d71 = Food.create(name: "Cinnamon", image: File.new("#{Rails.root}/app/assets/images/herbandspice/cinnamon.jpeg"))
+d72 = Food.create(name: "Clove", image: File.new("#{Rails.root}/app/assets/images/herbandspice/clove.jpeg"))
+d73 = Food.create(name: "Allspice", image: File.new("#{Rails.root}/app/assets/images/herbandspice/allspice.jpeg"))
+d74 = Food.create(name: "Mace", image: File.new("#{Rails.root}/app/assets/images/herbandspice/mace.jpeg"))
 
 # Exotic and Aromatic Spices Foods
-d75 = Food.create(name: "Anise")
-d76 = Food.create(name: "Turnmeric")
-d77 = Food.create(name: "Saffron")
-d78 = Food.create(name: "Fennel")
-d79 = Food.create(name: "Ginger")
+d75 = Food.create(name: "Anise", image: File.new("#{Rails.root}/app/assets/images/herbandspice/anise.jpeg"))
+d76 = Food.create(name: "Turnmeric", image: File.new("#{Rails.root}/app/assets/images/herbandspice/tumeric.jpeg"))
+d77 = Food.create(name: "Saffron", image: File.new("#{Rails.root}/app/assets/images/herbandspice/saffron.jpeg"))
+d78 = Food.create(name: "Fennel", image: File.new("#{Rails.root}/app/assets/images/herbandspice/fennel.jpeg"))
+d79 = Food.create(name: "Ginger", image: File.new("#{Rails.root}/app/assets/images/herbandspice/ginger.jpeg"))
 
 # White Starches Foods
-d80 = Food.create(name: "Flour")
-d81 = Food.create(name: "White Rice")
-d82 = Food.create(name: "Pasta")
-d83 = Food.create(name: "Bread")
-d84 = Food.create(name: "Tortillas")
+d80 = Food.create(name: "Flour", image: File.new("#{Rails.root}/app/assets/images/starch/flour.jpeg"))
+d81 = Food.create(name: "White Rice", image: File.new("#{Rails.root}/app/assets/images/starch/whiterice.jpeg"))
+d82 = Food.create(name: "Pasta", image: File.new("#{Rails.root}/app/assets/images/starch/pasta.jpeg"))
+d83 = Food.create(name: "Bread", image: File.new("#{Rails.root}/app/assets/images/starch/bread.jpeg"))
+d84 = Food.create(name: "Tortillas", image: File.new("#{Rails.root}/app/assets/images/starch/tortilla.jpeg"))
 
 # Whole Wheat Grains
-d85 = Food.create(name: "Quinoa")
-d86 = Food.create(name: "Farro")
-d87 = Food.create(name: "Brown Rice")
+d85 = Food.create(name: "Quinoa", image: File.new("#{Rails.root}/app/assets/images/starch/quinoa.jpeg"))
+d86 = Food.create(name: "Farro", image: File.new("#{Rails.root}/app/assets/images/starch/farro.jpg"))
+d87 = Food.create(name: "Brown Rice", image: File.new("#{Rails.root}/app/assets/images/starch/brownrice.jpeg"))
 
 # Sweet Root Vegetable Foods
-d88 = Food.create(name: "Sweet Potato")
-d89 = Food.create(name: "Yucca")
-d90 = Food.create(name: "Taro")
+d88 = Food.create(name: "Sweet Potato", image: File.new("#{Rails.root}/app/assets/images/starch/sweetpotato.jpeg"))
+d89 = Food.create(name: "Yucca", image: File.new("#{Rails.root}/app/assets/images/starch/yuccaroot.jpeg"))
+d90 = Food.create(name: "Taro", image: File.new("#{Rails.root}/app/assets/images/starch/taro.jpg"))
 
 # Fruits and Berries Foods
-d91 = Food.create(name: "Strawberry")
-d92 = Food.create(name: "Orange")
-d93 = Food.create(name: "Apple")
-d94 = Food.create(name: "Peach")
+d91 = Food.create(name: "Strawberry", image: File.new("#{Rails.root}/app/assets/images/sweet/strawberry.jpeg"))
+d92 = Food.create(name: "Orange", image: File.new("#{Rails.root}/app/assets/images/sweet/orange.jpeg"))
+d93 = Food.create(name: "Apple", image: File.new("#{Rails.root}/app/assets/images/sweet/apple.jpeg"))
+d94 = Food.create(name: "Peach", image: File.new("#{Rails.root}/app/assets/images/sweet/peach.jpeg"))
 
 # Vanilla and Carmel Foods
-d95 = Food.create(name: "Creme Brulee")
-d96 = Food.create(name: "Ice Cream")
+d95 = Food.create(name: "Creme Brulee", image: File.new("#{Rails.root}/app/assets/images/sweet/cremebrulee.jpeg"))
+d96 = Food.create(name: "Ice Cream", image: File.new("#{Rails.root}/app/assets/images/sweet/icecream.jpeg"))
 
 
 # Red Meat Foods 
@@ -789,7 +789,7 @@ p18.foods << d46
 
 # Nightshades Foods 
 p19.foods << d47
-p19.foods << d49
+p19.foods << d48
 p19.foods << d49
 
 # Funghi Foods

@@ -1,11 +1,10 @@
-mkSomm.controller('HomeCtrl', ['$scope',function($scope){
-	$scope.home = "It Works!"
-
+mkSomm.controller('HomeCtrl', ['$scope', 'uiGmapGoogleMapApi', function($scope, uiGmapGoogleMapApi){
+	
 	}
 ]);
 
 mkSomm.controller('CategorySearchCtrl', ['$scope', '$location', 'categories', 'foodGroups', function($scope, $location, categories, foodGroups){
-  // $scope.clicked = false;
+  
   console.log(categories.categories)
   $scope.categories = categories.categories
   $scope.varietals = categories.varietals
@@ -27,21 +26,29 @@ mkSomm.controller('CategorySearchCtrl', ['$scope', '$location', 'categories', 'f
   }
 ])
 
-mkSomm.controller('FoodSearchCtrl', ['$scope', '$location', 'foodGroups', function($scope, $location, foodGroups){
+mkSomm.controller('FoodSearchCtrl', ['$scope', '$location', 'foodGroups',function($scope, $location, foodGroups){
 
-  $scope.foodGroups = foodGroups.foodGroups
-  $scope.foods = foodGroups.foods
-  $scope.categories = foodGroups.category
-  $scope.varietals = foodGroups.varietals
-  $scope.wines = foodGroups.wines
-  $scope.clicked = false
-  $scope.search = false
+  $scope.foodGroups = foodGroups.foodGroups;
+  $scope.foods = foodGroups.foods;
+  $scope.categories = foodGroups.category;
+  $scope.varietals = foodGroups.varietals;
+  $scope.wines = foodGroups.wines;
+  $scope.clicked = false;
+  $scope.search = false;
+  $scope.foodPicture = true;
+  $scope.pickedFood = true;
+  $scope.isCollapsed = false;
+  $scope.showVarietals = false;
 
   $scope.newFood = function(value){
     foodGroups.nextSelection(value)
     foodGroups.addToCategories(value)
     console.log($scope.categories)
-    // console.log(categories)
+    
+  }
+
+  $scope.reset = function(){
+    foodGroups.resetValues()
   }
 
   $scope.findVarietals = function(){
@@ -59,15 +66,9 @@ mkSomm.controller('FoodSearchCtrl', ['$scope', '$location', 'foodGroups', functi
    $scope.findWines = function(value){
     var varietal = value
     foodGroups.findWines(varietal)
-    // console.log(foodGroups.wines)
-    // console.log($scope.wines[0])
 
-  } 
+    } 
 
-
-  // WineSearchCtrl
-
-  
   }
 ])
 
@@ -105,7 +106,6 @@ mkSomm.controller('WineCtrl', ['$scope', '$location', 'wines', function($scope, 
   $scope.home = "It Works!"
     
     $scope.addWine = function(wine){
-      // console.log(wine)
     
       wines.create({
         name: wine.Name,
@@ -124,11 +124,25 @@ mkSomm.controller('WineCtrl', ['$scope', '$location', 'wines', function($scope, 
   }
 ]);
 
-mkSomm.controller('UserCtrl', ['$scope','$state','Auth', 'users', function($scope, $state, Auth, users){
+mkSomm.controller('UserCtrl', ['$scope','$state','Auth', 'users', 'uiGmapGoogleMapApi', function($scope, $state, Auth, users, uiGmapGoogleMapApi){
     $scope.test = "It works!"
     $scope.signedIn = Auth.isAuthenticated;
     console.log(users.wines)
     $scope.wines = users.wines
+    $scope.wineries = users.wineries
+    $scope.map = { center: { 
+                latitude: 38.5, 
+                longitude: -122.32 
+              }, 
+              zoom: 10 
+            };
+    $scope.marker = {
+          coords: {
+            latitude: 38.5,
+            longitude: -122.32
+          }
+
+      } 
 
     Auth.currentUser().then(function (user){
         $scope.user = user;
@@ -151,26 +165,11 @@ mkSomm.controller('UserCtrl', ['$scope','$state','Auth', 'users', function($scop
     $scope.findWineries = function(value){
     var varietal = value
     users.findWineries(varietal)
-    // console.log(foodGroups.wines)
-    // console.log($scope.wines[0])
 
     } 
 
   }
 ])
-
-mkSomm.controller("WineryCtrl", ['$scope', 'wineries',  function($scope, wineries) {
-    // Do stuff with your $scope.
-    // Note: Some of the directives require at least something to be defined originally!
-    // e.g. $scope.markers = []
-
-    // uiGmapGoogleMapApi is a promise.
-    // The "then" callback function provides the google.maps object.
-    // uiGmapGoogleMapApi.then(function(maps) {
-
-    // });
-  }
-]);
 
 mkSomm.controller('AuthCtrl', ['$scope','$state','Auth', function($scope, $state, Auth){
 

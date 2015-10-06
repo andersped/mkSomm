@@ -1,17 +1,25 @@
-<div class="page-header">
-      <h1>{{user.username}}</h1>
+<div ng-include="'nav/_nav.html'"></div>
+
+<div class="row">
+	<div class="col-md-6">
+		<h1 style="color: white;">Your Wines</h1>
+
+	<!-- Search wine.com api -->
+		<button type="button" value="" ng-click="findWineries('merlot')">Search Wineries</button>
+	</div>
+	<div class="col-md-6">
+				<div style="align: center">
+			<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+					<ui-gmap-marker coords='marker.coords' idKey="1"></ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
+	</div>
 </div>
 
-<h1>Your Wines</h1>
-
-<!-- Search wine.com api -->
-			<!-- <button type="button" value="" ng-click="findWineries('merlot')">Search Wineries</button> -->
-
-
-
+<div class="row">
 <div ng-repeat="wine in wines |	orderBy:'-votes'">
 	<div class="col-lg-4 col-md-6 text-center">
-		<div class="service-box">
+		<div class="service-box" style="color: white;">
 	  	
 	  	<div><img src="{{wine.label}}" alt=""></div>
 	  	<div>{{wine.name}}</div>
@@ -30,7 +38,7 @@
       	{{wine.vote}}
 				<br>
 
-			  <button type="button" value="{{wine}}" ng-click="deleteWine(wine)">Delete</button>
+			  <button type="button" style="color: black;" value="{{wine}}" ng-click="deleteWine(wine)">Delete</button>
 
 
 			     				<!-- <div>Category: {{wine.category}}</div> -->
@@ -38,5 +46,28 @@
 <!-- 			  	<button type="button" ng-click="addWine(wine)">Add to List</button> -->
 				</div>
 	   </div>
-	 </div> 
+	 </div>
+</div>	  
+	 <br>
+	 <br>
+<div class="row">	 
+		<div ng-repeat="winery in wineries" class="slide-top; col-md-4" style="color: white;">	
+					<div class="service-box">
+						<div>{{winery.name}}</div>
+							<div ng-repeat="tasting_room in winery.tasting_rooms">
+								<div>{{tasting_room.hours}}</div>
+							</div>
+							<div ng-repeat="varietal in winery.varietals">
+								<div>{{varietal.name}}</div>
+							</div>
+					</div>
+					<br>
+					<br>
+		</div>
 </div>
+
+<!-- <div style="align: center">
+	<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+			<ui-gmap-marker coords='marker.coords' idKey="1"></ui-gmap-marker>
+	</ui-gmap-google-map>
+</div> -->

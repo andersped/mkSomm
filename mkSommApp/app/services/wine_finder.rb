@@ -9,7 +9,7 @@ class WineFinder
 
   def wine_search
   	
-		url = "http://services.wine.com/api/beta2/service.svc/json/catalog?search=#{@varietal}&size=50&apikey=a16ee38c0befcddba3b69ff693aa5ece"
+		url = "http://services.wine.com/api/beta2/service.svc/json/catalog?search=#{@varietal}+napa&size=15&apikey=a16ee38c0befcddba3b69ff693aa5ece"
 		
 		htmlRequest = Typhoeus::Request.new(
 			url,
