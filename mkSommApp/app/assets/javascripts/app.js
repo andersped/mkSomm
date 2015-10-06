@@ -75,3 +75,7 @@ mkSomm.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $
 
   $urlRouterProvider.otherwise('home');
 }])
+
+mkSomm.run(function($rootScope) {
+    $rootScope.wineList=false;
+})

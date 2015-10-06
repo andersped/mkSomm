@@ -26,7 +26,7 @@ mkSomm.controller('CategorySearchCtrl', ['$scope', '$location', 'categories', 'f
   }
 ])
 
-mkSomm.controller('FoodSearchCtrl', ['$scope', '$location', 'foodGroups',function($scope, $location, foodGroups){
+mkSomm.controller('FoodSearchCtrl', ['$scope', '$location', 'foodGroups', function($scope, $location, foodGroups){
 
   $scope.foodGroups = foodGroups.foodGroups;
   $scope.foods = foodGroups.foods;
@@ -39,6 +39,7 @@ mkSomm.controller('FoodSearchCtrl', ['$scope', '$location', 'foodGroups',functio
   $scope.pickedFood = true;
   $scope.isCollapsed = false;
   $scope.showVarietals = false;
+  // $scope.wineList = true;
 
   $scope.newFood = function(value){
     foodGroups.nextSelection(value)
@@ -96,14 +97,14 @@ mkSomm.controller('NavCtrl', ['$scope', 'Auth', function($scope, Auth){
   }
 ]);
 
-mkSomm.controller('WineSearchCtrl', ['$scope', '$location', function($scope, $location){
-  $scope.test = "It Works!"
+// mkSomm.controller('WineSearchCtrl', ['$scope', '$location', function($scope, $location){
+//   $scope.test = "It Works!"
 
-  }
-])
+//   }
+// ])
 
-mkSomm.controller('WineCtrl', ['$scope', '$location', 'wines', function($scope, $location, wines){
-  $scope.home = "It Works!"
+mkSomm.controller('WineCtrl', ['$scope', '$location', 'wines', 'foodGroups', function($scope, $location, wines, foodGroups){
+  
     
     $scope.addWine = function(wine){
     
@@ -118,7 +119,7 @@ mkSomm.controller('WineCtrl', ['$scope', '$location', 'wines', function($scope, 
         score: wine.Ratings.HighestScore,
         type: wine.Type,
       })
-     console.log(wine.vote) 
+
     }
 
   }

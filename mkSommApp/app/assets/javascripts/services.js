@@ -99,8 +99,7 @@ mkSomm.factory('foodGroups', ['$http', function($http){
 			}
 		} console.log(wineCategoryCounter/categories.length)
 
-			wineSelection = Math.round(wineCategoryCounter/categories.length)
-			console.log(wineSelection)
+			wineSelection = Math.round(wineCategoryCounter/categories.length)+2
 
 			if (wineSelection == 9){
 				wineSelection = "Bold%20Red"
@@ -148,11 +147,8 @@ mkSomm.factory('wines', ['$http', function($http){
   };
 
   o.create = function(wine) {
- 	 	console.log("It Works!")
  	 	return $http.post('/wines.json', wine).success(function(data){
    	o.wines.push(data);
-   	console.log(data)
-   	console.log(data.vote)
 
   	});
 	};

@@ -1,16 +1,12 @@
 <div ng-include="'nav/_nav.html'"></div>
+<h1 class="text-center v-center" style="color: white;">Wine Categories</h1>
 
-<div>
-	<h4>Search By Category</h4>
-</div>
-
-<div class="container-fluid">
+<div class="container">
 	<div ng-repeat="category in categories">
-<!-- 		<div class="col-lg-3 col-md-6 text-center">
-	      <div class="service-box"> -->
-	        <button class="btn btn-primary btn-xl pairing-button" value="{{category.name}}" ng-click="findVarietals(category)">{{category.name}}</button>
-<!-- 	     </div>
-	   </div>  -->
+
+				<div class="varietalButton">
+	        <button class="btn btn-primary pairing-button wineCategories" value="{{category.name}}" ng-click="findVarietals(category)">{{category.name}}</button>
+				</div>
 	</div>
 	
 <br>
@@ -18,44 +14,37 @@
 <br>
 <br>
 <br>
+<br>
+<br>
 <div>
-	<h3>Varietals</h3>
 </div>
 <div ng-repeat="varietal in varietals">
-		<ul>
-	      <div class="service-box">
-	        <li ng-click="clicked=true"><a href="">{{varietal.name}}</a></li>
-	        <div>
-	        	<ul ng-show="clicked">
-	        		<li><b>Aroma:</b> {{varietal.aroma}}</li>
-							<li><b>Earth:</b> {{varietal.earth}}</li>
-							<li><b>Floral:</b> {{varietal.floral}}</li>
-							<li><b>Fruit:</b> {{varietal.fruit}}</li>
-							<li><b>Herbal:</b> {{varietal.herbal}}</li>
-							<li><b>Oak:</b> {{varietal.oak}}</li>
-							<li><b>Other:</b> {{varietal.other}}</li>
-							<li><b>Spice:</b> {{varietal.spice}}</li>
-							<li><b>Structure:</b> {{varietal.structure}}</li>
-							<li><b>Visual:</b> {{varietal.visual}}</li>
-							<button ng-click="clicked=false">Close</button>
-	        	</ul>
-	       	</div>
-	     </div>
-	     	<!-- Search wine.com api -->
-			<button type="button" value="{{varietal.name}}" ng-click="findWines(varietal.name); search=true">Find {{varietal.name}}</button>	
-
-			<!-- Make this an ng-show if the Search button is clicked -->
-			<div ng-repeat="wine in wines">
-					<div class="col-lg-4 col-md-4 text-center">
-	      		<div class="service-box">
-	     				<div>{{wine.Name}}</div>
-							<div ng-repeat="Label in wine.Labels">
-	     					<div><img src="{{Label.Url}}" height="72px" width="80px" alt=""></div>
-	     					<div><button>Add to Favorites</button></div>
-	     				</div>
-	     			</div>
-	  			</div> 
-			</div>	
+		<div class="varietalButton">
+		        	<button type="button" class="btn btn-primary round center-block" ng-click="isCollapsed = !isCollapsed">{{varietal.name}}</button>
+		</div>
+		        <div ng-show="isCollapsed">
+			        <div class="well well-lg" style="color: black;">
+			        	<ul>
+			        		Tasting Notes:
+			        		<li><b>Aroma:</b> {{varietal.aroma}}</li>
+									<li><b>Earth:</b> {{varietal.earth}}</li>
+									<li><b>Floral:</b> {{varietal.floral}}</li>
+									<li><b>Fruit:</b> {{varietal.fruit}}</li>
+									<li><b>Herbal:</b> {{varietal.herbal}}</li>
+									<li><b>Oak:</b> {{varietal.oak}}</li>
+									<li><b>Other:</b> {{varietal.other}}</li>
+									<li><b>Spice:</b> {{varietal.spice}}</li>
+									<li><b>Structure:</b> {{varietal.structure}}</li>
+									<li><b>Visual:</b> {{varietal.visual}}</li>
+			        	</ul>
+			        	<!-- Search wine.com api -->
+			        	<button type="button" class="btn btn-primary round pairing-button" value="{{varietal.name}}" ng-click="findWines(varietal.name); search=true; isCollapsed=false; $root.wineList=true">Search {{varietal.name}}</button>
+			       	</div>
+		       	</div>
+		     
+		     	<!-- Search wine.com api -->
+				</div>
 	</ul>
+</div>
 </div>
 

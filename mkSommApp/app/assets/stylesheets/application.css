@@ -15,6 +15,28 @@
  *= require_self
  */
 
+ ul
+{
+    list-style-type: none;
+}
+
+#foodPairingButton{
+	  position: absolute;
+    right: 200px;
+    z-index: 10px;
+}
+
+#winePairingButton{
+	  position: absolute;
+    right: 200px;
+    z-index: 10;
+}
+
+.wineCategories{
+  float: left;
+  display: inline-block;
+  margin: 1em;
+}
 
  .varietalButton {
     text-align:center;
@@ -26,8 +48,8 @@
     color: white;
     border-radius: none;
     background-color: transparent;
-   background: transparent;
-   border-color: transparent
+   background: black;
+   border-color: transparent;
 }
 
 .navbar-default .navbar-header > a {
@@ -35,8 +57,8 @@
 	border: none;
 	border-radius:none;
 	background-color: transparent;
-   background: transparent;
-   border-color: transparent
+   background: black;
+   border-color: transparent;
 }
 
  .navbar-default .navbar-nav > li > a {
@@ -44,14 +66,13 @@
    border: none;
    border-radius: none;
    background-color: transparent;
-   background: transparent;
-   border-color: transparent
+   background: black;
+   border-color: transparent;
 }
 
 .main-image {
 	margin:0 auto;
   display: inline;
-
 }
 
 .pairing-button{
@@ -97,8 +118,48 @@
 
     
 /*}*/
+.responsive-image{
+    width: 100%;
+    background-size: 100% 100%;
+} 
 
-body { 
+and finally, we serve for every view-port the right image:
+
+/* Retina display */
+@media screen and (min-width: 1024px){
+    .responsive-image{
+        background-image: url('../img/retina.jpg');
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 980px) and (max-width: 1024px){
+    .responsive-image{
+        background-image: url('../img/desktop.jpg');
+    }
+}
+
+/* Tablet */
+@media screen and (min-width: 760px) and (max-width: 980px){
+    .responsive-image{
+        background-image: url('../img/tablet.jpg');
+    }
+}
+
+/* Mobile HD */
+@media screen and (min-width: 350px) and (max-width: 760px){
+    .responsive-image{
+        background-image: url('../img/mobile-hd.jpg');
+    }
+}
+
+/* Mobile LD */
+@media screen and (max-width: 350px){
+    .responsive-image{
+        background-image: url('../img/mobile-ld.jpg');
+    }
+} 
+/*body { 
   background: url("background/WomenSavySomm_back.png"); 
   background-repeat: no-repeat;  
   -webkit-background-size: cover;
@@ -106,6 +167,20 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+*/
+#image img {
+    min-width: 100%;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+body{ 
+    background: transparent url("/WomenSavySomm_back.png") no-repeat top center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; }
 
 .savySomm {
 	/*content: url("background/savySomm_button.png");*/
@@ -1424,4 +1499,85 @@ body {
   -ms-transform: perspective(300px) rotateY(0deg);
   -webkit-transform: perspective(300px) rotateY(0deg);
   opacity: 1;
+}
+
+/**************************
+  DEFAULT BOOTSTRAP STYLES
+**************************/
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 10px 16px;
+}
+  
+.btn-lg {
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #990000;
+  border-color: #357ebd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #990000;
+  border-color: #285e8e;
+}
+
+/***********************
+  ROUND BUTTONS
+************************/
+.round {
+  border-radius: 24px;
+}
+
+/***********************
+  CUSTON BTN VALUES
+************************/
+
+.btn {
+	padding: 14px 24px;
+	border: 0 none;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+	outline: 0 none;
+}
+
+.btn-primary {
+	background: #990000;
+	color: #ffffff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+	background: #990000;
+}
+.btn-primary:active, .btn-primary.active {
+	background: #990000;
+	box-shadow: none;
 }

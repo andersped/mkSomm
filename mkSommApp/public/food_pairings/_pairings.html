@@ -1,12 +1,11 @@
 <div ng-include="'nav/_nav.html'"></div>
-
 <div class="row" style="color: white;">
 	<div class="col-md-4"></div>
 	<div class="col-md-4" style="text-align: center;">
 		
 	<!-- 	<div class="col-lg-3 col-md-6 text-center"> -->
 			<div ng-repeat="food in foods">	
-				<div><i>{{food}}</i></div>
+				<div><i><h2 class="text-center v-center" style="color: white;">{{food}}</h2></i></div>
 			</div>
 			<br>
 			<br>
@@ -27,7 +26,7 @@
 			<div class="inner row">
         <div class="col-lg-4 scale-fade" ng-repeat="foodGroup in foodGroups">
                 <img ng-src="{{foodGroup.image_url}}" alt="" class="img-responsive; foodPictures" ng-click="newFood(foodGroup)">
-                <div>
+                <div stype="text-align: center;">
 								{{foodGroup.name}}
 								</div>
         </div> 
@@ -48,12 +47,15 @@
 		<button type="button" class="btn btn-primary btn-xl pairing-button" ng-click="findVarietals(); pickedFood=false; showVarietals=true">Find Varietals</button>	
 		<button type="button" class="btn btn-primary btn-xl pairing-button" ng-click="reset(); pickedFood=true; showVarietals=false">Start Again</button>
 	</div>
+	<br>
+	<br>
 
 	<div class="row" ng-show="showVarietals" style="color: white;">
 		<div ng-repeat="varietal in varietals" class="slide-top; col-md-3">
 		      <div class="service-box; varietalTypes">
-		        <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{varietal.name}}</button>
-		        
+		      	<div class="varietalButton">
+		        	<button type="button" class="btn btn-primary round center-block" ng-click="isCollapsed = !isCollapsed">{{varietal.name}}</button>
+		        </div>
 		        <div ng-show="isCollapsed">
 			        <div class="well well-lg" style="color: black;">
 			        	<ul>
@@ -70,7 +72,7 @@
 									<li><b>Visual:</b> {{varietal.visual}}</li>
 			        	</ul>
 			        	<!-- Search wine.com api -->
-			        	<button type="button" class="btn btn-primary btn-xl pairing-button" value="{{varietal.name}}" ng-click="findWines(varietal.name); search=true; isCollapsed=false">Search {{varietal.name}}</button>
+			        	<button type="button" class="btn btn-primary round pairing-button" value="{{varietal.name}}" ng-click="findWines(varietal.name); search=true; isCollapsed=false; $root.wineList=true">Search {{varietal.name}}</button>
 			       	</div>
 		       	</div>
 		     
@@ -80,6 +82,7 @@
 	</div>
 
 				<!-- Make this an ng-show if the Search button is clicked -->
+			<div ng-show="wineList">	
 				<div ng-repeat="wine in wines |orderBy:'PriceRetail'" style="color: white;">
 						<div class="col-lg-4 col-md-4 text-center">
 		      		<div class="service-box">
@@ -92,14 +95,16 @@
 				     				<div><b><i>Winery:</i></b> {{wine.Vineyard.Name}}</div>
 				     				<div><b><i>Retail Price:</i></b> {{wine.PriceRetail | currency}}</div>
 				     				<div><b><i>Rating:</i></b> {{wine.Ratings.HighestScore}}</div>
-				     				<div><b><i>Type:</i></b> {{wine.Type}}</div>
 				     				<div>Category:{{varietal.category}}</div>
 				     				<div ng-controller="WineCtrl">
-				     					<button type="button" style="color: black;" ng-click="addWine(wine); reset()">Add to List</button>
+				     					<button type="button" class="btn round" style="color: black;" ng-click="addWine(wine); $root.wineList=false">Add to List</button>
 				     				</div>
+				     				<br>
+				     				<br>
 				     		</div>
 		     			</div>
 		  			</div> 
 				</div>
+			</div>	
 	
 

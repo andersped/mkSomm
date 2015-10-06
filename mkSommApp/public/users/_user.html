@@ -2,12 +2,12 @@
 
 <div class="row">
 	<div class="col-md-6">
-		<h1 style="color: white;">Your Wines</h1>
+		<h1 style="color: white;">{{user.username}}'s Wines</h1>
 
-	<!-- Search wine.com api -->
-		<button type="button" value="" ng-click="findWineries('merlot')">Search Wineries</button>
+	<!-- Search SavySomm api -->
+		<button type="button" class="btn btn-primary btn-xl pairing-button" value="" ng-click="findWineries('merlot')">Search Wineries</button>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-3">
 				<div style="align: center">
 			<ui-gmap-google-map center='map.center' zoom='map.zoom'>
 					<ui-gmap-marker coords='marker.coords' idKey="1"></ui-gmap-marker>
@@ -38,7 +38,7 @@
       	{{wine.vote}}
 				<br>
 
-			  <button type="button" style="color: black;" value="{{wine}}" ng-click="deleteWine(wine)">Delete</button>
+			  <button type="button" style="color: black;" class="btn" value="{{wine}}" ng-click="deleteWine(wine)">Delete</button>
 
 
 			     				<!-- <div>Category: {{wine.category}}</div> -->

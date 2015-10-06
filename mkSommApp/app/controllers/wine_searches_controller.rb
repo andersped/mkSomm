@@ -1,5 +1,6 @@
 class WineSearchesController < ApplicationController
-		# Get Wines from Wine.com
+	
+	# Get Wines from Wine.com
   def index
   	@varietal = URI.encode(params[:varietal])
 
