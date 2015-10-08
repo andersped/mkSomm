@@ -167,6 +167,13 @@
   background-size: cover;
 }
 */
+
+.backgroundButtons{
+	position: fixed;
+	width: 100%;
+	top: 30%;
+}
+
 #image img {
     min-width: 100%;
     width: 100%;
@@ -188,12 +195,12 @@ body{
 }
 
 .foodiesButton {
-   content: url("http://i.imgur.com/gmLXmep.png");
+   content: url("/foodie_button.png");
 
 }
 
 .winoButton{ 
-	 content: url("http://i.imgur.com/4c7QCWF.png");
+	 content: url("/wino_button.png");
 }
 
 .example-animate-container {
