@@ -1,28 +1,16 @@
-== README
+== Savy Somm
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Savy Somm is an app where users can figure out what wine they like or should purchase based on their food selections. Users can find which food to pair with wines based on their wine selection. This application also uses a separate app's api to find which wineries in Napa to visit based on wine and food selections. 
 
-Things you may want to cover:
+This application is built on rails (4.2.3) and angularjs. User authentication is done through the devise gem. 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== Instructions
+1. Go to the home page and choose whether you are a foodie or wino.
+2. If your a foodie:
+   - Select which foods you like to eat or are eating.
+   - Press the find varietals button. 
+   - Press the find wines button within that varietal category and choose your wines
+3. If your a wino:
+   - Select which category of varietals you would like to search for.
+   - Select the varietal and then search for wines.
+4. On the user page search for wineries and rate each wine. 
